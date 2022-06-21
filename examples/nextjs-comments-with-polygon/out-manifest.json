@@ -1,0 +1,27 @@
+{
+"manifest": "arweave/paths",
+"version": "0.1.0",
+"paths": {
+"404.html":{"id":"qjxlUdWF5NvBjuRahnHxhgof3TTeHNZej2aK9SyzD0Q"},
+"_next/static/6z19hIDt1CIW9Wf4oHyRs/_middlewareManifest.js":{"id":"EtLYzqpr3qe8QIbmyETH-eFDNVqbOwiH2lBp-oUp2Qo"},
+"_next/static/6z19hIDt1CIW9Wf4oHyRs/_buildManifest.js":{"id":"2-X1PgueRf_bmMdpve_PPP2qeEKCubvZ_ZKfHy710oU"},
+"favicon.ico":{"id":"iESlM4ct1VTQSaB8pbUwPy--yyVJkIx13J5U48CgIfc"},
+"vercel.svg":{"id":"ofqsQmAEkpUupU0DrFIkNcM1YRkYrl6IyklZ0G2Yhpw"},
+"_next/static/6z19hIDt1CIW9Wf4oHyRs/_ssgManifest.js":{"id":"P9wQBOhW_oPUiDiAQ2PzEQoNh7D96zG8CrkI4U0sD-8"},
+"index.html":{"id":"RN7Po_X8-0m9ljfUFTRHVdf5Ca2P7BsAPkpE_euMCFk"},
+"_next/static/chunks/pages/_app-3d24e76344852c5d.js":{"id":"Bd18AtHZ2XjAsvH6uMF1-kljGEr6-lLdPJJWeXNbpHE"},
+"_next/static/chunks/pages/_error-2280fa386d040b66.js":{"id":"7YioQGwBNBO5xh52pE4zOJ6q_fq_iWpleuj6YoIHdfc"},
+"_next/static/chunks/webpack-a2ce1f7754b5f875.js":{"id":"-BUgxFPJbznbAVVoafUEYs5rl5ljuUob1rL30UNbMW0"},
+"_next/static/chunks/pages/index-49cff412abe9b131.js":{"id":"wzbgCombcScH198KHB1PUZFx6YG6X1Iq9xM3unPF0ww"},
+"_next/static/media/poppins-latin-400-normal.916d3686.woff2":{"id":"i7dTzs_I9cPXDs9odO6T4Na8c_qs4ySVuKzFPFoiUgk"},
+"_next/static/css/99fab42b8757dd2e.css":{"id":"kjRVs4lrvhzzUytHQX0-Uwh8suU6OPyU9n4LrM2SH-c"},
+"_next/static/media/poppins-latin-ext-400-normal.591327bf.woff2":{"id":"_M8XWygBOA-qBqtR4FqajB3wpDmC70FiqjEQC5YSlJY"},
+"_next/static/chunks/main-101cfeaa18eb0e64.js":{"id":"tVLngteB780-84SNaf4k4LTSb_vhv33OBlY8s7PgerQ"},
+"_next/static/media/poppins-devanagari-400-normal.87c72f23.woff2":{"id":"P1nKMgt4BB4PtkTvHXlOtasgBeUxVIM7QzfrnuPS2ls"},
+"_next/static/chunks/framework-6e4ba497ae0c8a3f.js":{"id":"Q7Vj0-0CrrwHZ3CpPXXsku16Cfe_Xh_QqFS_QV9NumQ"},
+"_next/static/chunks/polyfills-5cd94c89d3acac5f.js":{"id":"OyTKDfrSxVAUl0byBaeMFJAyAcHGMuoDopsVFsVXq0E"},
+"_next/static/media/poppins-all-400-normal.268c923b.woff":{"id":"_bgQNFS_SITfIqrYodyQ2XFGvM9w1xo5MGZD2ucfPXQ"},
+"_next/static/chunks/24-2e8988e23052dfb0.js":{"id":"vQHOmm-lQ8SM71SPbzgtEGOdbPlwXnKPXq6jnbXliU4"}
+},
+"index":{"path":"index.html"}
+}

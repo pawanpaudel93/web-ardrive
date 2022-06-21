@@ -1,0 +1,9 @@
+{
+  "name": "simple-js-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "ardrive-cli": "^1.16.0"
+  }
+}
