@@ -8,6 +8,7 @@ import Arweave from 'arweave';
 
 import { fundArLocalWallet, log, WebArDriveConfig } from './utils';
 import { arDriveFactory, DEFAULT_APP_NAME, DEFAULT_APP_VERSION } from './web-ardrive';
+
 const checkConfig = (config: WebArDriveConfig) => {
   if (!config.folderPath && typeof config.folderPath !== 'string') {
     throw new Error('folderPath must be a string in web-ardrive.config.js');

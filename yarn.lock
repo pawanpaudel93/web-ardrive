@@ -1724,20 +1724,7 @@ arconnect@^0.4.2:
   dependencies:
     arweave "^1.10.13"
 
-ardrive-cli@^1.16.0:
-  version "1.16.0"
-  resolved "https://registry.yarnpkg.com/ardrive-cli/-/ardrive-cli-1.16.0.tgz#aead2183bab425c36250ce041529456b1ef3c26c"
-  integrity sha512-hzlPROCxmE9zozU7bSSRc3mmB4r1g2usElECiD3+AksNUhD3DrsTl6tGMNgp4zzhIPyPNWbEPDAZCZLB1ojCEg==
-  dependencies:
-    ardrive-core-js "1.15.1"
-    arweave "1.11.4"
-    axios "^0.21.1"
-    bn.js "^5.2.1"
-    commander "^8.2.0"
-    lodash "^4.17.21"
-    prompts "^2.4.0"
-
-ardrive-core-js@1.15.1, ardrive-core-js@^1.15.1:
+ardrive-core-js@^1.15.1:
   version "1.15.1"
   resolved "https://registry.yarnpkg.com/ardrive-core-js/-/ardrive-core-js-1.15.1.tgz#b0bd3048aa6abc14b0cba2792606c131f7e845a6"
   integrity sha512-BYejmbsMS1QAZ1h7ORtWM6uEeTTzVRv2S06bh1M8Gwpv6kcYN0f7bahARlyZJDMelX5MhU2SEEm06WNyqzsodA==
@@ -1792,16 +1779,18 @@ argv@0.0.2:
   resolved "https://registry.yarnpkg.com/argv/-/argv-0.0.2.tgz#ecbd16f8949b157183711b1bda334f37840185ab"
   integrity sha512-dEamhpPEwRUBpLNHeuCm/v+g0anFByHahxodVO/BbAarHVBBg2MccCwf9K+o1Pof+2btdnkJelYVUWjW/VrATw==
 
-arlocal@^1.1.42:
-  version "1.1.42"
-  resolved "https://registry.yarnpkg.com/arlocal/-/arlocal-1.1.42.tgz#807e24d447a642d81848094ad35c04aea3deecd9"
-  integrity sha512-nDj/adr3kQZGjoMUgr6Yhrc+WZAigJBKxf0Nf4BvgUf6SBej7J1Dx/ZSXz4eeplFB89iSE1zgaJBMiKMPMznmw==
+arlocal@^1.1.44:
+  version "1.1.44"
+  resolved "https://registry.yarnpkg.com/arlocal/-/arlocal-1.1.44.tgz#580c2832c4ad3574b3be59b4dc1986d3ba6a3062"
+  integrity sha512-+oDgJLHOvEamXOK3LTlma7khhgZyOrGZIvgSjsE9UbA7IFJk26teZz98cBHsmtl+q4KrPnjmQ4998NG6c+mrwA==
   dependencies:
     "@koa/cors" "^3.1.0"
     apollo-server-koa "^3.6.2"
     arbundles "^0.6.19"
     arweave-bundles "^1.0.3"
+    asn1.js "5.4.1"
     bignumber.js "^9.0.2"
+    bytes "^3.1.2"
     graphql "^16.2.0"
     knex "^0.95.6"
     koa "^2.13.4"
@@ -1920,7 +1909,7 @@ arweave-stream-tx@^1.1.0:
     exponential-backoff "^3.1.0"
     stream-chunker "^1.2.8"
 
-arweave@1.11.4, arweave@^1.10.13, arweave@^1.10.5, arweave@^1.11.4:
+arweave@^1.10.13, arweave@^1.10.5, arweave@^1.11.4:
   version "1.11.4"
   resolved "https://registry.yarnpkg.com/arweave/-/arweave-1.11.4.tgz#19e5850d3b9f655cacb0953b36a12ac6596b195c"
   integrity sha512-EPUms1OMet/VFmYMefgxIpj17PIlIZzIteiHAn0tetN+d/LRV6N9CCsrg/t22hL6yLGdGRHrYlDEdsWqjwSSYg==
@@ -1932,7 +1921,7 @@ arweave@1.11.4, arweave@^1.10.13, arweave@^1.10.5, arweave@^1.11.4:
     bignumber.js "^9.0.2"
     util "^0.12.4"
 
-asn1.js@^5.0.1, asn1.js@^5.3.0, asn1.js@^5.4.1:
+asn1.js@5.4.1, asn1.js@^5.0.1, asn1.js@^5.3.0, asn1.js@^5.4.1:
   version "5.4.1"
   resolved "https://registry.yarnpkg.com/asn1.js/-/asn1.js-5.4.1.tgz#11a980b84ebb91781ce35b0fdc2ee294e3783f07"
   integrity sha512-+I//4cYPccV8LdmBLiX8CYvf9Sp3vQsrqu2QNXRcrbiWvcx/UdlFiqUJJzxRQxgsZmvhXhn4cSKeSmoFjVdupA==
@@ -2270,7 +2259,7 @@ bufferutil@^4.0.1:
   dependencies:
     node-gyp-build "^4.3.0"
 
-bytes@3.1.2, bytes@^3.1.0:
+bytes@3.1.2, bytes@^3.1.0, bytes@^3.1.2:
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/bytes/-/bytes-3.1.2.tgz#8b0beeb98605adf1b128fa4386403c009e0221a5"
   integrity sha512-/Nf7TyzTx6S3yRJObOAV7956r8cr2+Oj8AC5dt8wSP3BQAoeX58NoHyCU8P8zGkNXStjTSi6fzO6F0pBdcYbEg==
@@ -2638,11 +2627,6 @@ commander@^7.1.0:
   version "7.2.0"
   resolved "https://registry.yarnpkg.com/commander/-/commander-7.2.0.tgz#a36cb57d0b501ce108e4d20559a150a391d97ab7"
   integrity sha512-QrWXB+ZQSVPmIWIhtEO9H+gwHaMGYiF5ChvoJ+K9ZGHG/sVsa6yiesAD1GC/x46sET00Xlwo1u49RVVVzvcSkw==
-
-commander@^8.2.0:
-  version "8.3.0"
-  resolved "https://registry.yarnpkg.com/commander/-/commander-8.3.0.tgz#4837ea1b2da67b9c616a67afbb0fafee567bca66"
-  integrity sha512-OkTL9umf+He2DZkUq8f8J9of7yL6RJKI24dVITBmNfZBmri9zYZQrKkuXiKhyfPSu8tUhnVBB1iKXevvnlR4Ww==
 
 commitizen@^4.0.3:
   version "4.2.4"
@@ -6821,7 +6805,7 @@ promise-retry@^2.0.1:
     err-code "^2.0.2"
     retry "^0.12.0"
 
-prompts@^2.4.0, prompts@^2.4.2:
+prompts@^2.4.2:
   version "2.4.2"
   resolved "https://registry.yarnpkg.com/prompts/-/prompts-2.4.2.tgz#7b57e73b3a48029ad10ebd44f74b01722a4cb069"
   integrity sha512-NxNv/kLguCA7p3jE8oL2aEBsrJWgAakBpgmgK6lpPWV+WuOmY6r2/zbAVnP+T8bQlA0nzHXSJSJW0Hq7ylaD2Q==

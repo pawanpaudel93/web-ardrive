@@ -204,7 +204,15 @@ export class WebArDrive extends ArDrive {
       }
     }
 
-    if (files.length > 0) {
+    if (this.config.dryRun) {
+      log.info(
+        `Uploading ${files.length} files takes total fees of ${totalFees.toString()} Winston (${totalFees
+          .dividedBy(10 ** 12)
+          .toString()} AR)`
+      );
+    }
+
+    if (files.length > 0 && !this.config.dryRun) {
       const folderID = (() => {
         const file = files[0];
         if (
