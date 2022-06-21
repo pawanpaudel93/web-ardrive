@@ -194,11 +194,7 @@ export class WebArDrive extends ArDrive {
     if (files.length > 0) {
       totalFees = totalFees.plus(tips.reduce((acc, tip) => tip.winston.plus(acc), new Winston(0)));
       totalFees = totalFees.plus(Object.values(fees).reduce((acc, fee) => fee.plus(acc), new Winston(0)));
-      log.info(
-        `Uploaded ${files.length} files with total fees of ${totalFees.toString()} Winston (${totalFees
-          .dividedBy(10 ** 12)
-          .toString()} AR)`
-      );
+
       log.info('App files uploaded successfully!');
     } else {
       if (glob.sync(path.join(this.config.folderPath, '/**/*')).length === 0) {
@@ -229,13 +225,20 @@ export class WebArDrive extends ArDrive {
         conflictResolution: 'upsert',
       });
       console.log(JSON.stringify(manifest, null, 4));
+      totalFees = totalFees.plus(manifest.tips.reduce((acc, tip) => tip.winston.plus(acc), new Winston(0)));
+      totalFees = totalFees.plus(Object.values(manifest.fees).reduce((acc, fee) => fee.plus(acc), new Winston(0)));
       log.info('Manifest created successfully!');
-      if (!buildJSON?.folderID && !buildJSON?.buildID) {
-        this.saveBuildJSON({
-          folderID: files[0].entityId.toString(),
-          buildID: manifest.created[0].dataTxId.toString(),
-        });
-      }
+      log.info(
+        `Uploaded ${files.length} files with total fees of ${totalFees.toString()} Winston (${totalFees
+          .dividedBy(10 ** 12)
+          .toString()} AR)`
+      );
+
+      this.saveBuildJSON({
+        folderID: folderID,
+        buildID: manifest.created[0].dataTxId.toString(),
+      });
+
       return manifest.created[0].dataTxId;
     } else {
       return buildJSON?.folderID;

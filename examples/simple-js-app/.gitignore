@@ -1,3 +1,4 @@
 node_modules
 .env
 wallet.json
+web-ardrive.build.test.json

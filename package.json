@@ -41,7 +41,6 @@
     "node": ">=10"
   },
   "dependencies": {
-    "ardrive-cli": "^1.16.0",
     "ardrive-core-js": "^1.15.1",
     "prompts": "^2.4.2",
     "tslog": "^3.3.3"
@@ -52,6 +51,7 @@
     "@types/prompts": "^2.0.14",
     "@typescript-eslint/eslint-plugin": "^4.0.1",
     "@typescript-eslint/parser": "^4.0.1",
+    "ardrive-cli": "^1.16.0",
     "arlocal": "^1.1.42",
     "ava": "^3.12.1",
     "codecov": "^3.5.0",
