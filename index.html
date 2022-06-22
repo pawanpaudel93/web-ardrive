@@ -1,0 +1,376 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>web-ardrive</title>
+	<meta name="description" content="Documentation for web-ardrive">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">web-ardrive</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="globals.html">Globals</a>
+				</li>
+			</ul>
+			<h1>web-ardrive</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<a href="#web-ardrive" id="web-ardrive" style="color: inherit; text-decoration: none;">
+					<h1>web-ardrive</h1>
+				</a>
+				<a href="#table-of-contents" id="table-of-contents" style="color: inherit; text-decoration: none;">
+					<h2>Table of Contents</h2>
+				</a>
+				<ul>
+					<li><a href="#about">About</a></li>
+					<li><a href="#installing">Installing</a></li>
+					<li><a href="#usage">Usage</a></li>
+					<li><a href="#contributing">Contributing</a></li>
+				</ul>
+				<blockquote>
+					<p>NOTE: WIP</p>
+				</blockquote>
+				<a href="#about-" id="about-" style="color: inherit; text-decoration: none;">
+					<h2>About <a name = "about"></a></h2>
+				</a>
+				<p>Web Ardrive is a cli tool to deploy web apps to Arweave using ArDrive. ArDrive isn&#39;t just another cloud storage service. ArDrive is built on the Arweave network whose permanent data storage lets to upload any files which will outlive you!
+				Learn more about <a href="https://ardrive.io/">ArDrive</a> and <a href="https://www.arweave.org/">Arweave</a>.</p>
+				<blockquote>
+					<p>:warning: <strong>Deploy using ArLocal first to check everything is working.</strong></p>
+				</blockquote>
+				<a href="#installing-" id="installing-" style="color: inherit; text-decoration: none;">
+					<h2>Installing <a name = "installing"></a></h2>
+				</a>
+				<p>Install the package using npm or yarn as desired to get started.</p>
+				<pre><code>npm <span class="hljs-keyword">install</span> -g web-ardrive
+</code></pre>
+				<p>OR</p>
+				<pre><code><span class="hljs-symbol">yarn</span> <span class="hljs-keyword">add</span> <span class="hljs-meta">global</span> web-ardrive
+</code></pre>
+				<a href="#usage-" id="usage-" style="color: inherit; text-decoration: none;">
+					<h2>Usage <a name = "usage"></a></h2>
+				</a>
+				<p>Lets go through steps on how to use web-ardrive in your projects to deploy apps.</p>
+				<p>When creating a manifest, it is possible to host a webpage or web app. You can do this by creating a manifest on a folder that has an <code>index.html</code> file in its root. The manifest contains the paths of the files and the transaction ID to resolve to for the given path. You can see more about it here <a href="https://github.com/ArweaveTeam/arweave/blob/master/doc/path-manifest-schema.md">Arweave Manifest</a>.</p>
+				<p>So to make the static build folders compatible on the arweave, we must use relative urls on the href instead of absolute ones so that the manifest can resolve the file path. For example <code>href=&quot;/dist/index.js&quot;</code> must be replaced with either <code>href=&quot;dist/index.js&quot;</code> or <code>href=&quot;./dist/index.js&quot;</code>.</p>
+				<p>Let&#39;s deploy applications created with popular libraries and frameworks using ArDrive.</p>
+				<a href="#reactjs-amp-nextjs" id="reactjs-amp-nextjs" style="color: inherit; text-decoration: none;">
+					<h3>ReactJS &amp; NextJS</h3>
+				</a>
+				<blockquote>
+					<p><strong>ReactJS</strong> </p>
+					<blockquote>
+						<p><span style='color: green;'>RECOMMENDED</span>: Use HashRouter from react-router-dom in react apps. Check project <a href="https://github.com/pawanpaudel93/web-ardrive/tree/main/examples">examples</a></p>
+					</blockquote>
+				</blockquote>
+				<p>Add the following to package.json so the paths can resolve correctly.</p>
+				<pre><code><span class="hljs-symbol">homepage:</span> <span class="hljs-string">&quot;.&quot;</span>
+</code></pre>
+				<p>Now you can create the production build. Run the following command:</p>
+				<pre><code>npm <span class="hljs-builtin-name">run</span> build
+</code></pre>
+				<p>OR</p>
+				<pre><code><span class="hljs-attribute">yarn build</span>
+</code></pre>
+				<blockquote>
+					<p><strong>Nextjs Static Export</strong>:</p>
+				</blockquote>
+				<p>Learn about it <a href="https://nextjs.org/docs/advanced-features/static-html-export">here</a> for the supported and unsupported features in static html export.</p>
+				<p>Add the configuration to the next.config.js or next.config.ts file.</p>
+				<pre><code><span class="hljs-symbol">assetPrefix:</span> <span class="hljs-string">&quot;./&quot;</span>,
+</code></pre>
+				<p>Add the following to package.json scripts.</p>
+				<pre><code><span class="hljs-string">&quot;export&quot;</span>: <span class="hljs-string">&quot;next build &amp;&amp; next export&quot;</span>
+</code></pre>
+				<p>And run: </p>
+				<pre><code>npm run <span class="hljs-keyword">export</span>
+</code></pre>
+				<p>OR</p>
+				<pre><code><span class="hljs-title">yarn</span> ex<span class="hljs-keyword">port</span>
+</code></pre>
+				<p>If you are having problems regarding images in nextjs html export, see <a href="https://stackoverflow.com/questions/65487914/error-image-optimization-using-next-js-default-loader-is-not-compatible-with-n">here</a>.</p>
+				<a href="#vuejs-amp-nuxtjs" id="vuejs-amp-nuxtjs" style="color: inherit; text-decoration: none;">
+					<h3>VueJS &amp; NuxtJS</h3>
+				</a>
+				<blockquote>
+					<p><strong>VueJS</strong></p>
+				</blockquote>
+				<blockquote>
+					<blockquote>
+						<p><span style='color: green;'>RECOMMENDED</span>: Use router in hash mode in vue apps.</p>
+					</blockquote>
+				</blockquote>
+				<p>Modify vue.config.js or vue.config.ts to include the following config:</p>
+				<pre><code>publicPath: <span class="hljs-string">&quot;./&quot;</span> <span class="hljs-regexp">//</span> default is /
+</code></pre>
+				<p>Now, run the following command to create the production build.</p>
+				<pre><code>npm <span class="hljs-builtin-name">run</span> build
+</code></pre>
+				<p>OR</p>
+				<pre><code><span class="hljs-attribute">yarn build</span>
+</code></pre>
+				<blockquote>
+					<p><strong>NuxtJS</strong></p>
+				</blockquote>
+				<p>Modify nuxt.config.js or nuxt.config.ts to include the following config:</p>
+				<pre><code>targe<span class="hljs-variable">t:</span> <span class="hljs-string">&#x27;static&#x27;</span>, // default <span class="hljs-keyword">is</span> <span class="hljs-string">&#x27;server&#x27;</span>
+router: {
+  <span class="hljs-keyword">mode</span>: <span class="hljs-string">&#x27;hash&#x27;</span>,
+  base: <span class="hljs-string">&#x27;./&#x27;</span>,
+  }
+</code></pre>
+				<p>Now, run the following command tp generate the static production build.</p>
+				<pre><code>npm run <span class="hljs-keyword">generate</span>
+</code></pre>
+				<p>OR</p>
+				<pre><code>yarn <span class="hljs-keyword">generate</span>
+</code></pre>
+				<p>Read more about going full static mode in nuxtjs [Going Full Static (<a href="https://nuxtjs.org/announcements/going-full-static/">https://nuxtjs.org/announcements/going-full-static/</a>)</p>
+				<blockquote>
+					<p>And now you have to add config file for web-ardrive to upload the production build to arweave.</p>
+				</blockquote>
+				<p>Create a file named web-ardrive.config.js on the root folder of your project and add the config as:</p>
+				<table>
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Type</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tbody><tr>
+							<td>walletPath</td>
+							<td>string</td>
+							<td>wallet json file path</td>
+						</tr>
+						<tr>
+							<td>folderPath</td>
+							<td>string</td>
+							<td>relative build folder path from project root folder Eg: &#39;build&#39; ,&#39;./build&#39;, &#39;out&#39;</td>
+						</tr>
+						<tr>
+							<td>destFolderName</td>
+							<td>string</td>
+							<td>Folder name for the folder where all the app files are stored. A folder with destFolderName is created on parent folder with parentFolderID</td>
+						</tr>
+						<tr>
+							<td>parentFolderID?</td>
+							<td>string</td>
+							<td>ArDrive folder ID where app is to be deployed. It is required when production is true</td>
+						</tr>
+						<tr>
+							<td>production?</td>
+							<td>boolean</td>
+							<td>ArLocal can be used when production is false. Default is true.</td>
+						</tr>
+						<tr>
+							<td>dryRun?</td>
+							<td>boolean</td>
+							<td>dryRun if true runs all the steps but will skip sending the actual transactions. This can be very useful for gathering price estimations or to confirm that you&#39;ve copy-pasted your entity IDs correctly before committing to an upload.</td>
+						</tr>
+				</tbody></table>
+				<p>Example of web-ardrive.config.js can be:</p>
+				<pre><code>/** @<span class="hljs-keyword">type</span> {import(<span class="hljs-symbol">&#x27;web</span>-ardrive&#x27;).<span class="hljs-type">WebArDriveConfig</span>} */
+
+const <span class="hljs-type">WebArDriveConfig</span> = {
+  walletPath: <span class="hljs-symbol">&#x27;wallet</span>.json&#x27;,
+  folderPath: <span class="hljs-symbol">&#x27;build&#x27;</span>,
+  parentFolderID: <span class="hljs-symbol">&#x27;e6cb2f0d</span>-<span class="hljs-number">91</span>d7-<span class="hljs-number">4</span>acc-<span class="hljs-number">9772</span>-<span class="hljs-number">72</span>c514263908&#x27;,
+  destFolderName: <span class="hljs-symbol">&#x27;public</span>-square&#x27;,
+  production: <span class="hljs-literal">false</span>,
+};
+
+module.exports = <span class="hljs-type">WebArDriveConfig</span>;
+</code></pre>
+				<p>This configuration deploys <code>build</code> folder to the folder with name <code>public-square</code> where <code>public-square</code> folder is created on parent folder with ID parentFolderID. Production is false so the application is not deployed to Arweave but to local testnet <code>ArLocal</code>.</p>
+				<p>If you want to check if the application is working as expected or not, the application can be deployed to local testnet <code>ArLocal</code> using production as false and running the local testnet. Run arlocal with the following from the terminal.</p>
+				<pre><code><span class="hljs-attribute">npx arlocal</span>
+</code></pre>
+				<p>After the configuration, run web-ardrive command from the root folder of the project.</p>
+				<pre><code><span class="hljs-attribute">web-ardrive</span>
+</code></pre>
+				<a href="#author" id="author" style="color: inherit; text-decoration: none;">
+					<h2>Author</h2>
+				</a>
+				<p>👤 <strong>Pawan Paudel</strong></p>
+				<ul>
+					<li>Github: <a href="https://github.com/pawanpaudel93">@pawanpaudel93</a></li>
+				</ul>
+				<a href="#🤝-contributing-" id="🤝-contributing-" style="color: inherit; text-decoration: none;">
+					<h2>🤝 Contributing <a name = "contributing"></a></h2>
+				</a>
+				<p>Contributions, issues and feature requests are welcome!<br />Feel free to check <a href="https://github.com/pawanpaudel93/web-ardrive/issues">issues page</a>.</p>
+				<a href="#show-your-support" id="show-your-support" style="color: inherit; text-decoration: none;">
+					<h2>Show your support</h2>
+				</a>
+				<p>Give a ⭐️ if this project helped you!</p>
+				<p>Copyright © 2022 <a href="https://github.com/pawanpaudel93">Pawan Paudel</a>.<br /></p>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="globals.html"><em>Globals</em></a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-class">
+						<a href="classes/webardrive.html" class="tsd-kind-icon">Web<wbr>ArDrive</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/ardrivesettings.html" class="tsd-kind-icon">Ar<wbr>Drive<wbr>Settings</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/uploadpathparameter.html" class="tsd-kind-icon">Upload<wbr>Path<wbr>Parameter</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#webardriveconfig" class="tsd-kind-icon">Web<wbr>ArDrive<wbr>Config</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#default_app_name" class="tsd-kind-icon">DEFAULT_<wbr>APP_<wbr>NAME</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#default_app_version" class="tsd-kind-icon">DEFAULT_<wbr>APP_<wbr>VERSION</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#conflictinterruptederror" class="tsd-kind-icon">conflict<wbr>Interrupted<wbr>Error</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#log" class="tsd-kind-icon">log</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#ardrivefactory" class="tsd-kind-icon">ar<wbr>Drive<wbr>Factory</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#checkconfig" class="tsd-kind-icon">check<wbr>Config</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#filenameprompt" class="tsd-kind-icon">file<wbr>Name<wbr>Prompt</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#filetofilenameconflict" class="tsd-kind-icon">file<wbr>ToFile<wbr>Name<wbr>Conflict</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#filetofoldernameconflict" class="tsd-kind-icon">file<wbr>ToFolder<wbr>Name<wbr>Conflict</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#foldernameprompt" class="tsd-kind-icon">folder<wbr>Name<wbr>Prompt</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#foldertofilenameconflict" class="tsd-kind-icon">folder<wbr>ToFile<wbr>Name<wbr>Conflict</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#foldertofoldernameconflict" class="tsd-kind-icon">folder<wbr>ToFolder<wbr>Name<wbr>Conflict</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#fundarlocalwallet" class="tsd-kind-icon">fund<wbr>ArLocal<wbr>Wallet</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#getnewnamefromrenameprompt" class="tsd-kind-icon">get<wbr>New<wbr>Name<wbr>From<wbr>Rename<wbr>Prompt</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#main" class="tsd-kind-icon">main</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#minearlocalblock" class="tsd-kind-icon">mine<wbr>ArLocal<wbr>Block</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#uploadfolder" class="tsd-kind-icon">upload<wbr>Folder</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#fileandfolderuploadconflictprompts" class="tsd-kind-icon">file<wbr>And<wbr>Folder<wbr>Upload<wbr>Conflict<wbr>Prompts</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#fileuploadconflictprompts" class="tsd-kind-icon">file<wbr>Upload<wbr>Conflict<wbr>Prompts</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#promptchoices" class="tsd-kind-icon">prompt<wbr>Choices</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
