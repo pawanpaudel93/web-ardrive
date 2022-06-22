@@ -130,10 +130,10 @@ Create a file named web-ardrive.config.js on the root folder of your project and
 | ------------ | ------------ | ------------ |
 |  walletPath |  string | wallet json file path |
 |folderPath	|	string	|	relative build folder path from project root folder Eg: 'build' ,'./build', 'out'	|
-| parentFolderID	  |  string |  ArDrive folder ID where app is to be deployed |
 |  destFolderName	 | string  | Folder name for the folder where all the app files are stored. A folder with destFolderName is created on parent folder with parentFolderID  |
+| parentFolderID?	  |  string |  ArDrive folder ID where app is to be deployed. It is required when production is true |
 | production?	| boolean	| ArLocal can be used when production is false. Default is true.	|
-| dryRun? | boolean | dryRun if true runs all the steps but will skip sending the actual transactions. This can be very useful for gathering price estimations or to confirm that you've copy-pasted your entity IDs correctly before committing to an upload. |
+| dryRun? | boolean | dryRun if true runs all the steps but will skip sending the actual transactions. This can be very useful for gathering price estimations or to confirm that you've copy-pasted your entity IDs correctly before committing to an upload. Default is false. |
 
 Example of web-ardrive.config.js can be:
 
