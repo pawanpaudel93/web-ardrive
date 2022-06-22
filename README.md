@@ -150,9 +150,9 @@ const WebArDriveConfig = {
 
 module.exports = WebArDriveConfig;
 ```
-This configuration deploys `build` folder to the folder with name `public-square` where `public-square` folder is created on parent folder with ID parentFolderID. Production is false so the application is not deployed to Arweave but to local testnet "ArLocal".
+This configuration deploys `build` folder to the folder with name `public-square` where `public-square` folder is created on parent folder with ID parentFolderID. Production is false so the application is not deployed to Arweave but to local testnet `ArLocal`.
 
-If you want to check if the application is working as expected or not, the application can be deployed to local testnet "ArLocal" using production as false and running the local testnet. Run arlocal with the following from the terminal.
+If you want to check if the application is working as expected or not, the application can be deployed to local testnet `ArLocal` using production as false and running the local testnet. Run arlocal with the following from the terminal.
 ```
 npx arlocal
 ```

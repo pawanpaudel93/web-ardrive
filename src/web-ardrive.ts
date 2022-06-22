@@ -247,7 +247,7 @@ export class WebArDrive extends ArDrive {
         buildID: manifest.created[0].dataTxId.toString(),
       });
 
-      return manifest.created[0].dataTxId;
+      return manifest.created[0].dataTxId.toString();
     } else {
       return buildJSON?.folderID;
     }

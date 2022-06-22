@@ -1,2 +1,2 @@
-export { WebArDrive } from './lib/web-ardrive';
-export { WebArDriveConfig } from './lib/utils';
+export { WebArDrive } from './web-ardrive';
+export { WebArDriveConfig } from './utils';

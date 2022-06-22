@@ -31,8 +31,8 @@ import { Logger } from 'tslog';
 export type WebArDriveConfig = {
   walletPath: string;
   folderPath: string;
-  parentFolderID: string;
   destFolderName: string;
+  parentFolderID?: string;
   production?: boolean;
   dryRun?: boolean;
 };

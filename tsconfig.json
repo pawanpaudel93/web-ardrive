@@ -38,10 +38,10 @@
     // "emitDecoratorMetadata": true /* Enables experimental support for emitting type metadata for decorators. */,
 
     "lib": ["es2017", "DOM"],
-    "types": ["node"],
-    "typeRoots": ["node_modules/@types", "src/types"]
+    "types": ["node", "mocha"],
+    "typeRoots": ["node_modules/@types", "src/types",]
   },
-  "include": ["src/**/*.ts", "src/lib/web-ardrive.spec.ts"],
+  "include": ["src/**/*.ts", "src/web-ardrive.spec.ts"],
   "exclude": ["node_modules/**"],
   "compileOnSave": false
 }
