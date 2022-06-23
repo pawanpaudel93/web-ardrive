@@ -3,7 +3,7 @@
 import fs from 'fs';
 import path from 'path';
 
-import { readJWKFile, WalletDAO } from 'ardrive-core-js';
+import { AR, readJWKFile, WalletDAO } from 'ardrive-core-js';
 import Arweave from 'arweave';
 
 import { fundArLocalWallet, log, WebArDriveConfig } from './utils';
@@ -61,13 +61,16 @@ const uploadFolder = async ({
       });
       if (!config.production) await fundArLocalWallet(arweave, wallet);
       const address = await wallet.getAddress();
-      const walletBalance = await walletDao.getAddressWinstonBalance(address);
+      const walletBalanceInWinston = await walletDao.getAddressWinstonBalance(address);
+      const walletBalanceInAR = new AR(walletBalanceInWinston);
       log.info(
-        `Loaded wallet with address: ${address} and Balance: ${walletBalance.dividedBy(10 ** 12).toString()} AR`
+        `Loaded wallet with address: ${address} and Balance: ${walletBalanceInWinston.toString()} Winston (${walletBalanceInAR.toString()} AR)`
       );
       try {
         const result = await arDrive.uploadFolder(arweave, address);
-        const baseUrl = `${arweaveConfig.protocol}://${arweaveConfig.host}:${arweaveConfig.port}`;
+        const baseUrl = `${arweaveConfig.protocol}://${arweaveConfig.host}${
+          config.production ? '' : ':' + arweaveConfig.port
+        }`;
         log.info(`Web app uploaded to ${baseUrl}/${result}`);
       } catch (e) {
         if (e.message === 'canceled') {
