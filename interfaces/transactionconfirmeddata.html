@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>UploadPathParameter | web-ardrive</title>
+	<title>TransactionConfirmedData | web-ardrive</title>
 	<meta name="description" content="Documentation for web-ardrive">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,10 +56,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="uploadpathparameter.html">UploadPathParameter</a>
+					<a href="transactionconfirmeddata.html">TransactionConfirmedData</a>
 				</li>
 			</ul>
-			<h1>Interface UploadPathParameter</h1>
+			<h1>Interface TransactionConfirmedData</h1>
 		</div>
 	</div>
 </header>
@@ -70,7 +70,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">UploadPathParameter</span>
+						<span class="target">TransactionConfirmedData</span>
 					</li>
 				</ul>
 			</section>
@@ -81,11 +81,9 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="uploadpathparameter.html#destinationfilename" class="tsd-kind-icon">destination<wbr>File<wbr>Name</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="uploadpathparameter.html#drivekey" class="tsd-kind-icon">drive<wbr>Key</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="uploadpathparameter.html#drivepassword" class="tsd-kind-icon">drive<wbr>Password</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="uploadpathparameter.html#parentfolderid" class="tsd-kind-icon">parent<wbr>Folder<wbr>Id</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="uploadpathparameter.html#wrappedentity" class="tsd-kind-icon">wrapped<wbr>Entity</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="transactionconfirmeddata.html#block_height" class="tsd-kind-icon">block_<wbr>height</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="transactionconfirmeddata.html#block_indep_hash" class="tsd-kind-icon">block_<wbr>indep_<wbr>hash</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="transactionconfirmeddata.html#number_of_confirmations" class="tsd-kind-icon">number_<wbr>of_<wbr>confirmations</a></li>
 							</ul>
 						</section>
 					</div>
@@ -94,52 +92,32 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="destinationfilename" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> destination<wbr>File<wbr>Name</h3>
-					<div class="tsd-signature tsd-kind-icon">destination<wbr>File<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="block_height" class="tsd-anchor"></a>
+					<h3>block_<wbr>height</h3>
+					<div class="tsd-signature tsd-kind-icon">block_<wbr>height<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/773cddb/src/utils.ts#L43">src/utils.ts:43</a></li>
+							<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/773cddb/src/utils.ts#L65">src/utils.ts:65</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="drivekey" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> drive<wbr>Key</h3>
-					<div class="tsd-signature tsd-kind-icon">drive<wbr>Key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">DriveKey</span></div>
+					<a name="block_indep_hash" class="tsd-anchor"></a>
+					<h3>block_<wbr>indep_<wbr>hash</h3>
+					<div class="tsd-signature tsd-kind-icon">block_<wbr>indep_<wbr>hash<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/773cddb/src/utils.ts#L45">src/utils.ts:45</a></li>
+							<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/773cddb/src/utils.ts#L64">src/utils.ts:64</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="drivepassword" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> drive<wbr>Password</h3>
-					<div class="tsd-signature tsd-kind-icon">drive<wbr>Password<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="number_of_confirmations" class="tsd-anchor"></a>
+					<h3>number_<wbr>of_<wbr>confirmations</h3>
+					<div class="tsd-signature tsd-kind-icon">number_<wbr>of_<wbr>confirmations<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/773cddb/src/utils.ts#L44">src/utils.ts:44</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="parentfolderid" class="tsd-anchor"></a>
-					<h3>parent<wbr>Folder<wbr>Id</h3>
-					<div class="tsd-signature tsd-kind-icon">parent<wbr>Folder<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">FolderID</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/773cddb/src/utils.ts#L41">src/utils.ts:41</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="wrappedentity" class="tsd-anchor"></a>
-					<h3>wrapped<wbr>Entity</h3>
-					<div class="tsd-signature tsd-kind-icon">wrapped<wbr>Entity<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ArFSFileToUpload</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">ArFSFolderToUpload</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/773cddb/src/utils.ts#L42">src/utils.ts:42</a></li>
+							<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/773cddb/src/utils.ts#L66">src/utils.ts:66</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -161,33 +139,27 @@
 					<li class=" tsd-kind-interface">
 						<a href="ardrivesettings.html" class="tsd-kind-icon">Ar<wbr>Drive<wbr>Settings</a>
 					</li>
-					<li class=" tsd-kind-interface">
-						<a href="transactionconfirmeddata.html" class="tsd-kind-icon">Transaction<wbr>Confirmed<wbr>Data</a>
-					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface">
-						<a href="uploadpathparameter.html" class="tsd-kind-icon">Upload<wbr>Path<wbr>Parameter</a>
+						<a href="transactionconfirmeddata.html" class="tsd-kind-icon">Transaction<wbr>Confirmed<wbr>Data</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="uploadpathparameter.html#destinationfilename" class="tsd-kind-icon">destination<wbr>File<wbr>Name</a>
+								<a href="transactionconfirmeddata.html#block_height" class="tsd-kind-icon">block_<wbr>height</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="uploadpathparameter.html#drivekey" class="tsd-kind-icon">drive<wbr>Key</a>
+								<a href="transactionconfirmeddata.html#block_indep_hash" class="tsd-kind-icon">block_<wbr>indep_<wbr>hash</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="uploadpathparameter.html#drivepassword" class="tsd-kind-icon">drive<wbr>Password</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="uploadpathparameter.html#parentfolderid" class="tsd-kind-icon">parent<wbr>Folder<wbr>Id</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="uploadpathparameter.html#wrappedentity" class="tsd-kind-icon">wrapped<wbr>Entity</a>
+								<a href="transactionconfirmeddata.html#number_of_confirmations" class="tsd-kind-icon">number_<wbr>of_<wbr>confirmations</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
+					<li class=" tsd-kind-interface">
+						<a href="uploadpathparameter.html" class="tsd-kind-icon">Upload<wbr>Path<wbr>Parameter</a>
+					</li>
 					<li class=" tsd-kind-type-alias">
 						<a href="../globals.html#webardriveconfig" class="tsd-kind-icon">Web<wbr>ArDrive<wbr>Config</a>
 					</li>

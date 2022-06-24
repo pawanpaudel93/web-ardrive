@@ -77,6 +77,7 @@
 							<h3>Interfaces</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-interface"><a href="interfaces/ardrivesettings.html" class="tsd-kind-icon">Ar<wbr>Drive<wbr>Settings</a></li>
+								<li class="tsd-kind-interface"><a href="interfaces/transactionconfirmeddata.html" class="tsd-kind-icon">Transaction<wbr>Confirmed<wbr>Data</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/uploadpathparameter.html" class="tsd-kind-icon">Upload<wbr>Path<wbr>Parameter</a></li>
 							</ul>
 						</section>
@@ -91,6 +92,7 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-variable"><a href="globals.html#default_app_name" class="tsd-kind-icon">DEFAULT_<wbr>APP_<wbr>NAME</a></li>
 								<li class="tsd-kind-variable"><a href="globals.html#default_app_version" class="tsd-kind-icon">DEFAULT_<wbr>APP_<wbr>VERSION</a></li>
+								<li class="tsd-kind-variable"><a href="globals.html#manifest_name" class="tsd-kind-icon">MANIFEST_<wbr>NAME</a></li>
 								<li class="tsd-kind-variable"><a href="globals.html#conflictinterruptederror" class="tsd-kind-icon">conflict<wbr>Interrupted<wbr>Error</a></li>
 								<li class="tsd-kind-variable"><a href="globals.html#log" class="tsd-kind-icon">log</a></li>
 							</ul>
@@ -132,7 +134,7 @@
 					<div class="tsd-signature tsd-kind-icon">Web<wbr>ArDrive<wbr>Config<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>destFolderName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>dryRun<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span>folderPath<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>parentFolderID<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>production<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span>walletPath<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/232b648/src/utils.ts#L31">src/utils.ts:31</a></li>
+							<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/773cddb/src/utils.ts#L31">src/utils.ts:31</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -168,17 +170,27 @@
 					<div class="tsd-signature tsd-kind-icon">DEFAULT_<wbr>APP_<wbr>NAME<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"Web ArDrive"</span><span class="tsd-signature-symbol"> = &quot;Web ArDrive&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/232b648/src/web-ardrive.ts#L31">src/web-ardrive.ts:31</a></li>
+							<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/773cddb/src/web-ardrive.ts#L41">src/web-ardrive.ts:41</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-variable">
 					<a name="default_app_version" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> DEFAULT_<wbr>APP_<wbr>VERSION</h3>
-					<div class="tsd-signature tsd-kind-icon">DEFAULT_<wbr>APP_<wbr>VERSION<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"1.0.0"</span><span class="tsd-signature-symbol"> = &quot;1.0.0&quot;</span></div>
+					<div class="tsd-signature tsd-kind-icon">DEFAULT_<wbr>APP_<wbr>VERSION<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"1.0.1"</span><span class="tsd-signature-symbol"> = &quot;1.0.1&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/232b648/src/web-ardrive.ts#L32">src/web-ardrive.ts:32</a></li>
+							<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/773cddb/src/web-ardrive.ts#L42">src/web-ardrive.ts:42</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable">
+					<a name="manifest_name" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> MANIFEST_<wbr>NAME</h3>
+					<div class="tsd-signature tsd-kind-icon">MANIFEST_<wbr>NAME<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"ArDriveManifest.json"</span><span class="tsd-signature-symbol"> = &quot;ArDriveManifest.json&quot;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/773cddb/src/web-ardrive.ts#L43">src/web-ardrive.ts:43</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -188,7 +200,7 @@
 					<div class="tsd-signature tsd-kind-icon">conflict<wbr>Interrupted<wbr>Error<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"Name conflict prompt was interrupted or could not be resolved!"</span><span class="tsd-signature-symbol"> = &quot;Name conflict prompt was interrupted or could not be resolved!&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/232b648/src/utils.ts#L197">src/utils.ts:197</a></li>
+							<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/773cddb/src/utils.ts#L203">src/utils.ts:203</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -198,7 +210,7 @@
 					<div class="tsd-signature tsd-kind-icon">log<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Logger</span><span class="tsd-signature-symbol"> = new Logger({name: &#x27;web-ardrive&#x27;,displayFilePath: &#x27;hidden&#x27;,displayFunctionName: false,displayDateTime: false,})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/232b648/src/utils.ts#L63">src/utils.ts:63</a></li>
+							<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/773cddb/src/utils.ts#L69">src/utils.ts:69</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -215,7 +227,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/232b648/src/web-ardrive.ts#L34">src/web-ardrive.ts:34</a></li>
+									<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/773cddb/src/web-ardrive.ts#L45">src/web-ardrive.ts:45</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -279,7 +291,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/232b648/src/cli.ts#L12">src/cli.ts:12</a></li>
+									<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/773cddb/src/cli.ts#L12">src/cli.ts:12</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -302,7 +314,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/232b648/src/utils.ts#L199">src/utils.ts:199</a></li>
+									<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/773cddb/src/utils.ts#L205">src/utils.ts:205</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Answers</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">"newName"</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -319,7 +331,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/232b648/src/utils.ts#L70">src/utils.ts:70</a></li>
+									<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/773cddb/src/utils.ts#L76">src/utils.ts:76</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -356,7 +368,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/232b648/src/utils.ts#L105">src/utils.ts:105</a></li>
+									<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/773cddb/src/utils.ts#L111">src/utils.ts:111</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -390,7 +402,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/232b648/src/utils.ts#L206">src/utils.ts:206</a></li>
+									<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/773cddb/src/utils.ts#L212">src/utils.ts:212</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Answers</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">"newName"</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -407,7 +419,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/232b648/src/utils.ts#L133">src/utils.ts:133</a></li>
+									<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/773cddb/src/utils.ts#L139">src/utils.ts:139</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -441,7 +453,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/232b648/src/utils.ts#L161">src/utils.ts:161</a></li>
+									<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/773cddb/src/utils.ts#L167">src/utils.ts:167</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -475,7 +487,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/232b648/src/utils.ts#L269">src/utils.ts:269</a></li>
+									<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/773cddb/src/utils.ts#L275">src/utils.ts:275</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -501,7 +513,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/232b648/src/utils.ts#L234">src/utils.ts:234</a></li>
+									<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/773cddb/src/utils.ts#L240">src/utils.ts:240</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -547,7 +559,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/232b648/src/cli.ts#L87">src/cli.ts:87</a></li>
+									<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/773cddb/src/cli.ts#L91">src/cli.ts:91</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -564,7 +576,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/232b648/src/utils.ts#L274">src/utils.ts:274</a></li>
+									<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/773cddb/src/utils.ts#L280">src/utils.ts:280</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -581,22 +593,25 @@
 					<a name="uploadfolder" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> upload<wbr>Folder</h3>
 					<ul class="tsd-signatures tsd-kind-function">
-						<li class="tsd-signature tsd-kind-icon">upload<wbr>Folder<span class="tsd-signature-symbol">(</span>__namedParameters<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>destFolderName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>folderPath<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>parentFolderID<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>production<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span>walletPath<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">upload<wbr>Folder<span class="tsd-signature-symbol">(</span>__namedParameters<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>destFolderName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>dryRun<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span>folderPath<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>parentFolderID<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>production<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span>walletPath<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/232b648/src/cli.ts#L27">src/cli.ts:27</a></li>
+									<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/773cddb/src/cli.ts#L27">src/cli.ts:27</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>__namedParameters: <span class="tsd-signature-symbol">{ </span>destFolderName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>folderPath<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>parentFolderID<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>production<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span>walletPath<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span></h5>
+									<h5>__namedParameters: <span class="tsd-signature-symbol">{ </span>destFolderName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>dryRun<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span>folderPath<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>parentFolderID<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>production<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span>walletPath<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span></h5>
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter">
 											<h5>dest<wbr>Folder<wbr>Name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
+										</li>
+										<li class="tsd-parameter">
+											<h5>dry<wbr>Run<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></h5>
 										</li>
 										<li class="tsd-parameter">
 											<h5>folder<wbr>Path<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
@@ -626,7 +641,7 @@
 					<div class="tsd-signature tsd-kind-icon">file<wbr>And<wbr>Folder<wbr>Upload<wbr>Conflict<wbr>Prompts<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/232b648/src/utils.ts#L227">src/utils.ts:227</a></li>
+							<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/773cddb/src/utils.ts#L233">src/utils.ts:233</a></li>
 						</ul>
 					</aside>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -635,7 +650,7 @@
 						<div class="tsd-signature tsd-kind-icon">folder<wbr>ToFile<wbr>Name<wbr>Conflict<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">FolderToFileConflictAskPrompt</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/232b648/src/utils.ts#L230">src/utils.ts:230</a></li>
+								<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/773cddb/src/utils.ts#L236">src/utils.ts:236</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -645,7 +660,7 @@
 						<div class="tsd-signature tsd-kind-icon">folder<wbr>ToFolder<wbr>Name<wbr>Conflict<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">FolderToFolderConflictAskPrompt</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/232b648/src/utils.ts#L229">src/utils.ts:229</a></li>
+								<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/773cddb/src/utils.ts#L235">src/utils.ts:235</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -656,7 +671,7 @@
 					<div class="tsd-signature tsd-kind-icon">file<wbr>Upload<wbr>Conflict<wbr>Prompts<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/232b648/src/utils.ts#L222">src/utils.ts:222</a></li>
+							<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/773cddb/src/utils.ts#L228">src/utils.ts:228</a></li>
 						</ul>
 					</aside>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -665,7 +680,7 @@
 						<div class="tsd-signature tsd-kind-icon">file<wbr>ToFile<wbr>Name<wbr>Conflict<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">FileToFileNameConflictPrompt</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/232b648/src/utils.ts#L223">src/utils.ts:223</a></li>
+								<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/773cddb/src/utils.ts#L229">src/utils.ts:229</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -675,7 +690,7 @@
 						<div class="tsd-signature tsd-kind-icon">file<wbr>ToFolder<wbr>Name<wbr>Conflict<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">FileToFolderConflictAskPrompt</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/232b648/src/utils.ts#L224">src/utils.ts:224</a></li>
+								<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/773cddb/src/utils.ts#L230">src/utils.ts:230</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -686,7 +701,7 @@
 					<div class="tsd-signature tsd-kind-icon">prompt<wbr>Choices<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/232b648/src/utils.ts#L213">src/utils.ts:213</a></li>
+							<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/773cddb/src/utils.ts#L219">src/utils.ts:219</a></li>
 						</ul>
 					</aside>
 					<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-object-literal">
@@ -695,7 +710,7 @@
 						<div class="tsd-signature tsd-kind-icon">create<wbr>Folder<wbr>With<wbr>New<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/232b648/src/utils.ts#L215">src/utils.ts:215</a></li>
+								<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/773cddb/src/utils.ts#L221">src/utils.ts:221</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -704,7 +719,7 @@
 							<div class="tsd-signature tsd-kind-icon">title<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;Create folder with a different name&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/232b648/src/utils.ts#L215">src/utils.ts:215</a></li>
+									<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/773cddb/src/utils.ts#L221">src/utils.ts:221</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -714,7 +729,7 @@
 							<div class="tsd-signature tsd-kind-icon">value<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = renameOnConflicts</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/232b648/src/utils.ts#L215">src/utils.ts:215</a></li>
+									<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/773cddb/src/utils.ts#L221">src/utils.ts:221</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -725,7 +740,7 @@
 						<div class="tsd-signature tsd-kind-icon">replace<wbr>AsRevision<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/232b648/src/utils.ts#L219">src/utils.ts:219</a></li>
+								<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/773cddb/src/utils.ts#L225">src/utils.ts:225</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -734,7 +749,7 @@
 							<div class="tsd-signature tsd-kind-icon">title<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;Replace as new file revision&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/232b648/src/utils.ts#L219">src/utils.ts:219</a></li>
+									<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/773cddb/src/utils.ts#L225">src/utils.ts:225</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -744,7 +759,7 @@
 							<div class="tsd-signature tsd-kind-icon">value<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = replaceOnConflicts</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/232b648/src/utils.ts#L219">src/utils.ts:219</a></li>
+									<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/773cddb/src/utils.ts#L225">src/utils.ts:225</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -755,7 +770,7 @@
 						<div class="tsd-signature tsd-kind-icon">skip<wbr>File<wbr>Upload<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/232b648/src/utils.ts#L218">src/utils.ts:218</a></li>
+								<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/773cddb/src/utils.ts#L224">src/utils.ts:224</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -764,7 +779,7 @@
 							<div class="tsd-signature tsd-kind-icon">title<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;Skip this file upload&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/232b648/src/utils.ts#L218">src/utils.ts:218</a></li>
+									<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/773cddb/src/utils.ts#L224">src/utils.ts:224</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -774,7 +789,7 @@
 							<div class="tsd-signature tsd-kind-icon">value<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = skipOnConflicts</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/232b648/src/utils.ts#L218">src/utils.ts:218</a></li>
+									<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/773cddb/src/utils.ts#L224">src/utils.ts:224</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -785,7 +800,7 @@
 						<div class="tsd-signature tsd-kind-icon">skip<wbr>Folder<wbr>And<wbr>Contents<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/232b648/src/utils.ts#L217">src/utils.ts:217</a></li>
+								<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/773cddb/src/utils.ts#L223">src/utils.ts:223</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -794,7 +809,7 @@
 							<div class="tsd-signature tsd-kind-icon">title<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;Skip uploading folder and all of its contents&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/232b648/src/utils.ts#L217">src/utils.ts:217</a></li>
+									<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/773cddb/src/utils.ts#L223">src/utils.ts:223</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -804,7 +819,7 @@
 							<div class="tsd-signature tsd-kind-icon">value<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = skipOnConflicts</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/232b648/src/utils.ts#L217">src/utils.ts:217</a></li>
+									<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/773cddb/src/utils.ts#L223">src/utils.ts:223</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -815,7 +830,7 @@
 						<div class="tsd-signature tsd-kind-icon">upload<wbr>File<wbr>With<wbr>New<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/232b648/src/utils.ts#L216">src/utils.ts:216</a></li>
+								<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/773cddb/src/utils.ts#L222">src/utils.ts:222</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -824,7 +839,7 @@
 							<div class="tsd-signature tsd-kind-icon">title<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;Upload with a different file name&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/232b648/src/utils.ts#L216">src/utils.ts:216</a></li>
+									<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/773cddb/src/utils.ts#L222">src/utils.ts:222</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -834,7 +849,7 @@
 							<div class="tsd-signature tsd-kind-icon">value<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = renameOnConflicts</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/232b648/src/utils.ts#L216">src/utils.ts:216</a></li>
+									<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/773cddb/src/utils.ts#L222">src/utils.ts:222</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -845,7 +860,7 @@
 						<div class="tsd-signature tsd-kind-icon">use<wbr>Existing<wbr>Folder<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/232b648/src/utils.ts#L214">src/utils.ts:214</a></li>
+								<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/773cddb/src/utils.ts#L220">src/utils.ts:220</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -854,7 +869,7 @@
 							<div class="tsd-signature tsd-kind-icon">title<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;Re-use existing folder&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/232b648/src/utils.ts#L214">src/utils.ts:214</a></li>
+									<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/773cddb/src/utils.ts#L220">src/utils.ts:220</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -864,7 +879,7 @@
 							<div class="tsd-signature tsd-kind-icon">value<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = useExistingFolder</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/232b648/src/utils.ts#L214">src/utils.ts:214</a></li>
+									<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/773cddb/src/utils.ts#L220">src/utils.ts:220</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -889,6 +904,9 @@
 						<a href="interfaces/ardrivesettings.html" class="tsd-kind-icon">Ar<wbr>Drive<wbr>Settings</a>
 					</li>
 					<li class=" tsd-kind-interface">
+						<a href="interfaces/transactionconfirmeddata.html" class="tsd-kind-icon">Transaction<wbr>Confirmed<wbr>Data</a>
+					</li>
+					<li class=" tsd-kind-interface">
 						<a href="interfaces/uploadpathparameter.html" class="tsd-kind-icon">Upload<wbr>Path<wbr>Parameter</a>
 					</li>
 					<li class=" tsd-kind-type-alias">
@@ -899,6 +917,9 @@
 					</li>
 					<li class=" tsd-kind-variable">
 						<a href="globals.html#default_app_version" class="tsd-kind-icon">DEFAULT_<wbr>APP_<wbr>VERSION</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#manifest_name" class="tsd-kind-icon">MANIFEST_<wbr>NAME</a>
 					</li>
 					<li class=" tsd-kind-variable">
 						<a href="globals.html#conflictinterruptederror" class="tsd-kind-icon">conflict<wbr>Interrupted<wbr>Error</a>
