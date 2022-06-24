@@ -30,8 +30,9 @@ const uploadFolder = async ({
   parentFolderID,
   destFolderName,
   production = true,
+  dryRun = false,
 }: WebArDriveConfig) => {
-  const config: WebArDriveConfig = { folderPath, walletPath, production, parentFolderID, destFolderName };
+  const config: WebArDriveConfig = { folderPath, walletPath, production, parentFolderID, destFolderName, dryRun };
   checkConfig(config);
   if (fs.existsSync(config.folderPath)) {
     try {

@@ -1,6 +1,6 @@
 {
   "name": "web-ardrive",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "description": "A CLI tool to deploy web apps to Arweave using ArDrive",
   "main": "build/main/index.js",
   "typings": "build/main/index.d.ts",

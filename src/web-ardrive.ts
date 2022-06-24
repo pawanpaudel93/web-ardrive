@@ -8,7 +8,6 @@ import {
   ArDriveCommunityOracle,
   ArDriveUploadStats,
   ArFSDAO,
-  ArFSPublicFolder,
   ArweaveAddress,
   CommunityOracle,
   EID,
@@ -35,6 +34,7 @@ import {
   fileUploadConflictPrompts,
   log,
   mineArLocalBlock,
+  TransactionConfirmedData,
   WebArDriveConfig,
 } from './utils';
 
@@ -177,21 +177,21 @@ export class WebArDrive extends ArDrive {
     fs.writeFileSync(this.buildFileName, JSON.stringify(buildJSON, null, 4));
   }
 
-  private async waitForFolderCreation(folderId: FolderID, owner: ArweaveAddress) {
-    let folder: ArFSPublicFolder;
+  private async waitForFolderCreation(arweave: Arweave, txId: string) {
+    let confirmationStatus: TransactionConfirmedData;
     const startTime = new Date().getTime();
-    const spinner = ora(`Waiting for ${this.config.destFolderName} folder creation...`).start();
-    while (!folder) {
-      try {
-        folder = await this.getPublicFolder({ folderId, owner });
-        spinner.stop();
-      } catch (e) {
+    const spinner = ora(`Waiting for ${this.config.destFolderName} transaction to be mined...`).start();
+    while (!confirmationStatus) {
+      confirmationStatus = (await arweave.transactions.getStatus(txId)).confirmed;
+      if (!confirmationStatus) {
         const timeInSeconds = Math.floor((new Date().getTime() - startTime) / 1000);
         const timeInMinutes = Math.floor(timeInSeconds / 60);
         const timeInSecondsRemainder = timeInSeconds % 60;
-        spinner.text = `Waiting for ${this.config.destFolderName} folder creation... Duration elapsed: ${timeInMinutes}m ${timeInSecondsRemainder}s`;
+        spinner.text = `Waiting for ${this.config.destFolderName} transaction to be mined... Duration elapsed: ${timeInMinutes}m ${timeInSecondsRemainder}s`;
         spinner.color = 'yellow';
         await new Promise((resolve) => setTimeout(resolve, 10000));
+      } else {
+        spinner.stop();
       }
     }
   }
@@ -226,8 +226,6 @@ export class WebArDrive extends ArDrive {
       totalFeesInWinston = totalFeesInWinston.plus(
         Object.values(fees).reduce((acc, fee) => fee.plus(acc), new Winston(0))
       );
-
-      log.info('App files uploaded successfully!');
     } else {
       if (glob.sync(path.join(this.config.folderPath, '/**/*')).length === 0) {
         log.info('No files to upload! Skipping upload.');
@@ -236,7 +234,7 @@ export class WebArDrive extends ArDrive {
       }
     }
 
-    if (this.config.dryRun) {
+    if (this.config.dryRun && files.length > 0) {
       log.info(
         `Uploading ${files.length} files takes total fees of ${totalFeesInWinston.toString()} Winston (${new AR(
           totalFeesInWinston
@@ -244,20 +242,21 @@ export class WebArDrive extends ArDrive {
       );
     }
     let folderId: FolderID;
-    let manifestFile;
+    let manifestDataTxId: string;
+    if (buildJSON?.folderId && buildJSON?.buildId) {
+      folderId = EID(buildJSON.folderId) as FolderID;
+      manifestDataTxId = buildJSON.buildId;
+    }
     if (files.length > 0) {
-      folderId = (() => {
-        const file = files[0];
-        if (
-          file.type === 'folder' &&
-          (this.config.folderPath.includes(file.entityName) ||
-            file.entityName.includes(this.config.folderPath) ||
-            (this.config.destFolderName && this.config.destFolderName.includes(file.entityName)))
-        ) {
-          return file.entityId;
-        }
-        return buildJSON?.folderId;
-      })();
+      const file = files[0];
+      if (
+        file.type === 'folder' &&
+        (this.config.folderPath.includes(file.entityName) ||
+          file.entityName.includes(this.config.folderPath) ||
+          (this.config.destFolderName && this.config.destFolderName.includes(file.entityName)))
+      ) {
+        folderId = file.entityId;
+      }
     }
     if (!folderId) {
       const children = await this.listPublicFolder({
@@ -265,10 +264,13 @@ export class WebArDrive extends ArDrive {
         maxDepth: 2,
         owner: address,
       });
-      manifestFile = children.find(
+      const manifestFile = children.find(
         (child) => child.name === MANIFEST_NAME && child.path.includes(this.config.destFolderName)
       );
       const folder = children.find((child) => child.name === this.config.destFolderName);
+      if (manifestFile) {
+        manifestDataTxId = manifestFile.dataTxId.toString();
+      }
       if (folder) {
         folderId = folder.entityId;
       } else {
@@ -276,8 +278,11 @@ export class WebArDrive extends ArDrive {
       }
     }
 
-    if ((files.length > 0 || typeof manifestFile === 'undefined') && !this.config.dryRun) {
-      await this.waitForFolderCreation(folderId, address);
+    if ((files.length > 0 || typeof manifestDataTxId === 'undefined') && !this.config.dryRun) {
+      if (this.config.production) {
+        await this.waitForFolderCreation(arweave, files[0].bundledIn.toString());
+      }
+      log.info('App files uploaded successfully!');
       log.info('Creating manifest...');
       const manifest = await this.uploadPublicManifest({
         folderId,
@@ -309,14 +314,14 @@ export class WebArDrive extends ArDrive {
       });
 
       return manifest.created[0].dataTxId.toString();
-    } else if (manifestFile) {
+    } else if (manifestDataTxId) {
       this.saveBuildJSON({
         folderId: folderId.toString(),
-        buildId: manifestFile.dataTxId.toString(),
+        buildId: manifestDataTxId,
       });
-      return manifestFile.dataTxId.toString();
+      return manifestDataTxId;
     } else {
-      return buildJSON?.folderId;
+      return buildJSON?.buildId;
     }
   }
 }

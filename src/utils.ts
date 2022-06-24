@@ -60,6 +60,12 @@ export interface ArDriveSettings extends ArDriveSettingsAnonymous {
   config: WebArDriveConfig;
 }
 
+export interface TransactionConfirmedData {
+  block_indep_hash: string;
+  block_height: number;
+  number_of_confirmations: number;
+}
+
 export const log: Logger = new Logger({
   name: 'web-ardrive',
   displayFilePath: 'hidden',
