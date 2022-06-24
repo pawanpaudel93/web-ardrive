@@ -7,3 +7,6 @@
 [submodule "examples/vuejs-longify-tiktok"]
 	path = examples/vuejs-longify-tiktok
 	url = git@github.com:pawanpaudel93/longify-tiktok.git
+[submodule "examples/nextjs-keyboard-generator"]
+	path = examples/nextjs-keyboard-generator
+	url = git@github.com:pawanpaudel93/solidity-keyboard-generator.git

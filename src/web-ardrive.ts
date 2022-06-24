@@ -8,6 +8,7 @@ import {
   ArDriveCommunityOracle,
   ArDriveUploadStats,
   ArFSDAO,
+  ArFSPublicFolder,
   ArweaveAddress,
   CommunityOracle,
   EID,
@@ -26,6 +27,7 @@ import { ArFSUploadPlanner, UploadPlanner } from 'ardrive-core-js/lib/arfs/arfs_
 import { ARDataPriceNetworkEstimator } from 'ardrive-core-js/lib/pricing/ar_data_price_network_estimator';
 import Arweave from 'arweave';
 import glob from 'glob';
+import ora from 'ora';
 
 import {
   ArDriveSettings,
@@ -175,18 +177,23 @@ export class WebArDrive extends ArDrive {
     fs.writeFileSync(this.buildFileName, JSON.stringify(buildJSON, null, 4));
   }
 
-  private waitForFolderCreation(folderId: FolderID, owner: ArweaveAddress) {
-    return new Promise<void>((resolve) => {
-      const interval = setInterval(async () => {
-        try {
-          await this.getPublicFolder({ folderId, owner });
-          clearInterval(interval);
-          resolve();
-        } catch (e) {
-          // do nothing
-        }
-      }, 5000);
-    });
+  private async waitForFolderCreation(folderId: FolderID, owner: ArweaveAddress) {
+    let folder: ArFSPublicFolder;
+    const startTime = new Date().getTime();
+    const spinner = ora(`Waiting for ${this.config.destFolderName} folder creation...`).start();
+    while (!folder) {
+      try {
+        folder = await this.getPublicFolder({ folderId, owner });
+        spinner.stop();
+      } catch (e) {
+        const timeInSeconds = Math.floor((new Date().getTime() - startTime) / 1000);
+        const timeInMinutes = Math.floor(timeInSeconds / 60);
+        const timeInSecondsRemainder = timeInSeconds % 60;
+        spinner.text = `Waiting for ${this.config.destFolderName} folder creation... Duration elapsed: ${timeInMinutes}m ${timeInSecondsRemainder}s`;
+        spinner.color = 'yellow';
+        await new Promise((resolve) => setTimeout(resolve, 10000));
+      }
+    }
   }
 
   public async uploadFolder(arweave: Arweave, address: ArweaveAddress) {
@@ -270,8 +277,6 @@ export class WebArDrive extends ArDrive {
     }
 
     if ((files.length > 0 || typeof manifestFile === 'undefined') && !this.config.dryRun) {
-      // wait for ardrive folder creation with folderId
-      log.info(`Waiting for folder creation with id ${folderId}`);
       await this.waitForFolderCreation(folderId, address);
       log.info('Creating manifest...');
       const manifest = await this.uploadPublicManifest({
@@ -294,6 +299,9 @@ export class WebArDrive extends ArDrive {
           totalFeesInWinston
         ).toString()} AR)`
       );
+      if (this.config.production) {
+        log.info('Wait for atleast 2-3 minutes for the application to be accessible.');
+      }
 
       this.saveBuildJSON({
         folderId: folderId.toString(),

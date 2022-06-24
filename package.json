@@ -45,6 +45,7 @@
   },
   "dependencies": {
     "ardrive-core-js": "^1.15.1",
+    "ora": "5.4.1",
     "prompts": "^2.4.2",
     "tslog": "^3.3.3"
   },

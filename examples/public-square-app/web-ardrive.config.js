@@ -3,9 +3,9 @@
 const WebArDriveConfig = {
   walletPath: 'wallet.json',
   folderPath: 'build',
-  parentFolderID: 'e6cb2f0d-91d7-4acc-9772-72c514263908',
+  parentFolderID: '16659ac0-3739-4bc5-9bcd-433b47aca030',
   destFolderName: 'public-square',
-  production: false,
+  production: true,
 };
 
 module.exports = WebArDriveConfig;
