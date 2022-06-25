@@ -8,11 +8,14 @@ import {
   ArDriveCommunityOracle,
   ArDriveUploadStats,
   ArFSDAO,
+  ArFSPublicFolder,
+  ArFSPublicFolderBuilder,
   ArweaveAddress,
   CommunityOracle,
   EID,
   FeeMultiple,
   FolderID,
+  GatewayAPI,
   GatewayOracle,
   gatewayUrlForArweave,
   Wallet,
@@ -34,12 +37,11 @@ import {
   fileUploadConflictPrompts,
   log,
   mineArLocalBlock,
-  TransactionConfirmedData,
   WebArDriveConfig,
 } from './utils';
 
 export const DEFAULT_APP_NAME = 'Web ArDrive';
-export const DEFAULT_APP_VERSION = '1.0.1';
+export const DEFAULT_APP_VERSION = '1.0.2';
 export const MANIFEST_NAME = 'ArDriveManifest.json';
 
 export function arDriveFactory({
@@ -177,21 +179,31 @@ export class WebArDrive extends ArDrive {
     fs.writeFileSync(this.buildFileName, JSON.stringify(buildJSON, null, 4));
   }
 
-  private async waitForFolderCreation(arweave: Arweave, txId: string) {
-    let confirmationStatus: TransactionConfirmedData;
+  private async sleep(seconds: number) {
+    return await new Promise((resolve) => setTimeout(resolve, seconds * 1000));
+  }
+
+  private async waitForFolderCreation(arweave: Arweave, txId: string, folderId: FolderID, owner: ArweaveAddress) {
+    console.log(`Waiting for folder creation tx ${txId} to be confirmed`);
+    let folder: ArFSPublicFolder;
     const startTime = new Date().getTime();
     const spinner = ora(`Waiting for ${this.config.destFolderName} transaction to be mined...`).start();
-    while (!confirmationStatus) {
-      confirmationStatus = (await arweave.transactions.getStatus(txId)).confirmed;
-      if (!confirmationStatus) {
+    const gatewayApi = new GatewayAPI({ gatewayUrl: gatewayUrlForArweave(arweave) });
+    while (!folder) {
+      try {
+        folder = await new ArFSPublicFolderBuilder({
+          entityId: folderId,
+          gatewayApi,
+          owner,
+        }).build();
+        spinner.stop();
+      } catch (e) {
         const timeInSeconds = Math.floor((new Date().getTime() - startTime) / 1000);
         const timeInMinutes = Math.floor(timeInSeconds / 60);
         const timeInSecondsRemainder = timeInSeconds % 60;
         spinner.text = `Waiting for ${this.config.destFolderName} transaction to be mined... Duration elapsed: ${timeInMinutes}m ${timeInSecondsRemainder}s`;
         spinner.color = 'yellow';
-        await new Promise((resolve) => setTimeout(resolve, 10000));
-      } else {
-        spinner.stop();
+        await this.sleep(10);
       }
     }
   }
@@ -280,7 +292,7 @@ export class WebArDrive extends ArDrive {
 
     if ((files.length > 0 || typeof manifestDataTxId === 'undefined') && !this.config.dryRun) {
       if (this.config.production) {
-        await this.waitForFolderCreation(arweave, files[0].bundledIn.toString());
+        await this.waitForFolderCreation(arweave, files[0].bundledIn.toString(), folderId, address);
       }
       log.info('App files uploaded successfully!');
       log.info('Creating manifest...');

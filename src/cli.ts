@@ -103,5 +103,6 @@ const main = async () => {
 };
 
 if (require.main === module) {
+  process.env['ARDRIVE_PROGRESS_LOG'] = '1';
   main();
 }
