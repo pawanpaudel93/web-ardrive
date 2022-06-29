@@ -103,6 +103,11 @@
 				<p>When creating a manifest, it is possible to host a webpage or web app. You can do this by creating a manifest on a folder that has an <code>index.html</code> file in its root. The manifest contains the paths of the files and the transaction ID to resolve to for the given path. You can see more about it here <a href="https://github.com/ArweaveTeam/arweave/blob/master/doc/path-manifest-schema.md">Arweave Manifest</a>.</p>
 				<p>So to make the static build folders compatible on the arweave, we must use relative urls on the href instead of absolute ones so that the manifest can resolve the file path. For example <code>href=&quot;/dist/index.js&quot;</code> must be replaced with either <code>href=&quot;dist/index.js&quot;</code> or <code>href=&quot;./dist/index.js&quot;</code>.</p>
 				<p>Let&#39;s deploy applications created with popular libraries and frameworks using ArDrive.</p>
+				<blockquote>
+					<blockquote>
+						<p><span style='color: green;'>RECOMMENDED</span>: Use router in hash mode in apps.</p>
+					</blockquote>
+				</blockquote>
 				<a href="#reactjs-amp-nextjs" id="reactjs-amp-nextjs" style="color: inherit; text-decoration: none;">
 					<h3>ReactJS &amp; NextJS</h3>
 				</a>
@@ -175,10 +180,26 @@ router: {
 				<pre><code>yarn <span class="hljs-keyword">generate</span>
 </code></pre>
 				<p>Read more about going full static mode in nuxtjs [Going Full Static (<a href="https://nuxtjs.org/announcements/going-full-static/">https://nuxtjs.org/announcements/going-full-static/</a>)</p>
+				<a href="#vitejs" id="vitejs" style="color: inherit; text-decoration: none;">
+					<h3>ViteJS</h3>
+				</a>
+				<p>Add the following to package.json so the paths can resolve correctly.</p>
+				<pre><code><span class="hljs-symbol">homepage:</span> <span class="hljs-string">&quot;.&quot;</span>
+</code></pre>
+				<p>Modify vite.config.js or vite.config.ts to include the following config:</p>
+				<pre><code>base: <span class="hljs-string">&quot;./&quot;</span> <span class="hljs-regexp">//</span> default is /
+</code></pre>
+				<p>Now, run the following command to create the production build.</p>
+				<pre><code>npm <span class="hljs-builtin-name">run</span> build
+</code></pre>
+				<p>OR</p>
+				<pre><code><span class="hljs-attribute">yarn build</span>
+</code></pre>
+				<p>Examples of react, vue and svelte using vite is included in the examples folder.</p>
 				<blockquote>
 					<p>And now you have to add config file for web-ardrive to upload the production build to arweave.</p>
 				</blockquote>
-				<p>Create a file named web-ardrive.config.js on the root folder of your project and add the config as:</p>
+				<p>Create a file named web-ardrive.config.js or web-ardrive.config.cjs  on the root folder of your project and add the config as:</p>
 				<table>
 					<thead>
 						<tr>
