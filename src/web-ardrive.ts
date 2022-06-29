@@ -41,7 +41,7 @@ import {
 } from './utils';
 
 export const DEFAULT_APP_NAME = 'Web ArDrive';
-export const DEFAULT_APP_VERSION = '1.0.2';
+export const DEFAULT_APP_VERSION = '1.0.3';
 export const MANIFEST_NAME = 'ArDriveManifest.json';
 
 export function arDriveFactory({
