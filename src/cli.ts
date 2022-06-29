@@ -5,22 +5,23 @@ import path from 'path';
 
 import { AR, readJWKFile, WalletDAO } from 'ardrive-core-js';
 import Arweave from 'arweave';
+import { glob } from 'glob';
 
 import { fundArLocalWallet, log, WebArDriveConfig } from './utils';
 import { arDriveFactory, DEFAULT_APP_NAME, DEFAULT_APP_VERSION } from './web-ardrive';
 
 const checkConfig = (config: WebArDriveConfig) => {
   if (!config.folderPath && typeof config.folderPath !== 'string') {
-    throw new Error('folderPath must be a string in web-ardrive.config.js');
+    throw new Error('folderPath must be a string in web-ardrive config file');
   }
   if (config.production && !config.parentFolderID) {
-    throw new Error('parentFolderID must be set in web-ardrive.config.js');
+    throw new Error('parentFolderID must be set in web-ardrive config file');
   }
   if (!config.walletPath) {
-    throw new Error('walletPath not specified in web-ardrive.config.js');
+    throw new Error('walletPath not specified in web-ardrive config file');
   }
   if (!config.destFolderName) {
-    throw new Error('destFolderName not specified in web-ardrive.config.js');
+    throw new Error('destFolderName not specified in web-ardrive config file');
   }
 };
 
@@ -89,16 +90,17 @@ const uploadFolder = async ({
 };
 
 const main = async () => {
-  const configPath = path.join(process.cwd(), 'web-ardrive.config.js');
-  if (fs.existsSync(configPath)) {
-    try {
-      const config: WebArDriveConfig = await require(configPath);
-      await uploadFolder(config);
-    } catch (e) {
-      log.error(e?.message ?? e);
-    }
-  } else {
-    log.error('No web-ardrive.config.js found in current directory');
+  const configFiles = glob.sync(path.join(process.cwd(), 'web-ardrive.config.{cjs,js}'));
+  if (configFiles.length === 0) {
+    log.error('Config file web-ardrive.config.js or web-ardrive.config.cjs not found');
+    return;
+  }
+  const configPath = configFiles[0];
+  try {
+    const config: WebArDriveConfig = await require(configPath);
+    await uploadFolder(config);
+  } catch (e) {
+    log.error(e?.message ?? e);
   }
 };
 

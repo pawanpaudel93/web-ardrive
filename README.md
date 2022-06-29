@@ -124,7 +124,7 @@ Read more about going full static mode in nuxtjs [Going Full Static (https://nux
 
 > And now you have to add config file for web-ardrive to upload the production build to arweave.
 
-Create a file named web-ardrive.config.js on the root folder of your project and add the config as:
+Create a file named web-ardrive.config.js or web-ardrive.config.cjs  on the root folder of your project and add the config as:
 
 |  Name | Type   | Description   |
 | ------------ | ------------ | ------------ |
