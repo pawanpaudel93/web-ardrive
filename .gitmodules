@@ -10,3 +10,12 @@
 [submodule "examples/nextjs-keyboard-generator"]
 	path = examples/nextjs-keyboard-generator
 	url = git@github.com:pawanpaudel93/solidity-keyboard-generator.git
+[submodule "examples/vite-react-arweave"]
+	path = examples/vite-react-arweave
+	url = git@github.com:pawanpaudel93/vite-react-arweave.git
+[submodule "examples/vite-vue-arweave"]
+	path = examples/vite-vue-arweave
+	url = git@github.com:pawanpaudel93/vite-vue-arweave.git
+[submodule "examples/vite-svelte-arweave"]
+	path = examples/vite-svelte-arweave
+	url = git@github.com:pawanpaudel93/vite-svelte-arweave.git
