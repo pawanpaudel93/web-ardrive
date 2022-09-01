@@ -30,13 +30,37 @@ import { Logger } from 'tslog';
 
 export type WebArDriveConfig = {
   walletPath: string;
-  folderPath: string;
   destFolderName: string;
+  folderPath?: string;
+  appType?: string;
   parentFolderID?: string;
   production?: boolean;
   dryRun?: boolean;
 };
 
+export type JsonSerializable =
+  | string
+  | number
+  | boolean
+  | null
+  | { [member: string]: JsonSerializable }
+  | JsonSerializable[];
+
+export type EntityMetaDataTransactionData = Record<string, JsonSerializable>;
+export type CustomMetaDataGqlTags = Record<string, string | string[]>;
+export type CustomMetaDataJsonFields = EntityMetaDataTransactionData;
+export type CustomMetaDataTagInterface = CustomMetaDataGqlTags;
+
+export interface CustomMetaData {
+  /** Include custom metadata on MetaData Tx Data JSON */
+  metaDataJson?: CustomMetaDataJsonFields;
+
+  /** Include custom metadata on MetaData Tx GQL Tags */
+  metaDataGqlTags?: CustomMetaDataGqlTags;
+
+  /** Include custom metadata on File Data Tx GQL Tags */
+  dataGqlTags?: CustomMetaDataTagInterface;
+}
 export interface UploadPathParameter {
   parentFolderId: FolderID;
   wrappedEntity: ArFSFileToUpload | ArFSFolderToUpload;

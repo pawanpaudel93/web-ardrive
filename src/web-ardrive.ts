@@ -2,22 +2,39 @@ import * as fs from 'fs';
 import path from 'path';
 
 import {
+  alphabeticalOrder,
   AR,
   ARDataPriceEstimator,
   ArDrive,
   ArDriveCommunityOracle,
   ArDriveUploadStats,
   ArFSDAO,
+  ArFSDataToUpload,
+  ArFSManifestResult,
+  ArFSPublicFileWithPaths,
   ArFSPublicFolder,
   ArFSPublicFolderBuilder,
+  ArFSPublicFolderWithPaths,
   ArweaveAddress,
+  ByteCount,
   CommunityOracle,
+  DataContentType,
   EID,
+  emptyManifestResult,
   FeeMultiple,
+  FileInfo,
+  FolderConflictPrompts,
   FolderID,
   GatewayAPI,
   GatewayOracle,
   gatewayUrlForArweave,
+  Manifest,
+  MANIFEST_CONTENT_TYPE,
+  ManifestPathMap,
+  TransactionID,
+  UnixTime,
+  UploadPublicManifestParams,
+  upsertOnConflicts,
   Wallet,
   WalletDAO,
   Winston,
@@ -27,12 +44,14 @@ import { ArFSCostCalculator, CostCalculator } from 'ardrive-core-js/lib/arfs/arf
 import { ArFSTagSettings } from 'ardrive-core-js/lib/arfs/arfs_tag_settings';
 import { ArFSUploadPlanner, UploadPlanner } from 'ardrive-core-js/lib/arfs/arfs_upload_planner';
 import { ARDataPriceNetworkEstimator } from 'ardrive-core-js/lib/pricing/ar_data_price_network_estimator';
+import { defaultArweaveGatewayPath } from 'ardrive-core-js/lib/utils/constants';
 import Arweave from 'arweave';
 import glob from 'glob';
 import ora from 'ora';
 
 import {
   ArDriveSettings,
+  CustomMetaData,
   fileAndFolderUploadConflictPrompts,
   fileUploadConflictPrompts,
   log,
@@ -41,7 +60,7 @@ import {
 } from './utils';
 
 export const DEFAULT_APP_NAME = 'Web ArDrive';
-export const DEFAULT_APP_VERSION = '1.0.3';
+export const DEFAULT_APP_VERSION = '2.0.0';
 export const MANIFEST_NAME = 'ArDriveManifest.json';
 
 export function arDriveFactory({
@@ -75,6 +94,116 @@ export function arDriveFactory({
     costCalculator,
     config
   );
+}
+
+export class ArFSManifestToUpload extends ArFSDataToUpload {
+  manifest: Manifest;
+  lastModifiedDateMS: UnixTime;
+
+  constructor(
+    public readonly folderToGenManifest: (ArFSPublicFolderWithPaths | ArFSPublicFileWithPaths)[],
+    public readonly destManifestName: string,
+    public readonly appType: string,
+    public readonly customMetaData?: CustomMetaData
+  ) {
+    super();
+
+    const sortedChildren = folderToGenManifest.sort((a, b) => alphabeticalOrder(a.path, b.path));
+    const baseFolderPath = sortedChildren[0].path;
+
+    // TODO: Fix base types so deleting un-used values is not necessary; Tickets: PE-525 + PE-556
+    const castedChildren = sortedChildren as Partial<ArFSPublicFolderWithPaths | ArFSPublicFileWithPaths>[];
+    castedChildren.map((fileOrFolderMetaData) => {
+      if (fileOrFolderMetaData.entityType === 'folder') {
+        delete fileOrFolderMetaData.lastModifiedDate;
+        delete fileOrFolderMetaData.size;
+        delete fileOrFolderMetaData.dataTxId;
+        delete fileOrFolderMetaData.dataContentType;
+      }
+    });
+
+    // TURN SORTED CHILDREN INTO MANIFEST
+    const pathMap: ManifestPathMap = {};
+    castedChildren.forEach((child) => {
+      if (child.dataTxId && child.path && child.dataContentType !== MANIFEST_CONTENT_TYPE) {
+        const path = child.path
+          // Slice off base folder path and the leading "/" so manifest URLs path correctly
+          .slice(baseFolderPath.length + 1)
+          // Replace spaces with underscores for sharing links
+          .replace(/ /g, '_');
+
+        pathMap[path.endsWith('.html') && appType === 'next' ? path.replace('.html', '') : path] = {
+          id: `${child.dataTxId}`,
+        };
+      }
+    });
+
+    if (Object.keys(pathMap).length === 0) {
+      throw new Error('Cannot construct a manifest of a folder that has no file entities!');
+    }
+
+    // Use index.html in the specified folder if it exists, otherwise show first file found
+    let indexPath = '';
+    if (appType === 'next') {
+      indexPath = Object.keys(pathMap).includes(`index`) ? `index` : Object.keys(pathMap)[0];
+    } else {
+      indexPath = Object.keys(pathMap).includes(`index.html`) ? `index.html` : Object.keys(pathMap)[0];
+    }
+    this.manifest = {
+      manifest: 'arweave/paths',
+      version: '0.1.0',
+      index: {
+        path: indexPath,
+      },
+      paths: pathMap,
+    };
+
+    // Create new current unix, as we just created this manifest
+    this.lastModifiedDateMS = new UnixTime(Math.round(Date.now() / 1000));
+  }
+
+  public getLinksOutput(dataTxId: TransactionID, gateway = new URL(defaultArweaveGatewayPath)): string[] {
+    const allPaths = Object.keys(this.manifest.paths);
+
+    const encodedPaths = allPaths.map((path) =>
+      path
+        // Split each path by `/` to avoid encoding the separation between folders and files
+        .split('/')
+        // Encode file/folder names for URL safe links
+        .map((path) => encodeURIComponent(path))
+        // Rejoin the paths
+        .join('/')
+    );
+
+    const pathsToFiles = encodedPaths.map((encodedPath) => `${gateway.href}${dataTxId}/${encodedPath}`);
+    const pathToManifestTx = `${gateway.href}${dataTxId}`;
+
+    return [pathToManifestTx, ...pathsToFiles];
+  }
+
+  public gatherFileInfo(): FileInfo {
+    return { dataContentType: this.contentType, lastModifiedDateMS: this.lastModifiedDateMS, fileSize: this.size };
+  }
+
+  public get contentType(): DataContentType {
+    return this.customContentType ?? MANIFEST_CONTENT_TYPE;
+  }
+
+  public getBaseName(): string {
+    return this.destName ?? this.destManifestName;
+  }
+
+  public getFileDataBuffer(): Buffer {
+    return Buffer.from(JSON.stringify(this.manifest));
+  }
+
+  public get size(): ByteCount {
+    return new ByteCount(Buffer.byteLength(JSON.stringify(this.manifest)));
+  }
+
+  public get lastModifiedDate(): UnixTime {
+    return this.lastModifiedDateMS;
+  }
 }
 
 export class WebArDrive extends ArDrive {
@@ -130,17 +259,10 @@ export class WebArDrive extends ArDrive {
 
   private modifyHtml(path: string) {
     const html = fs.readFileSync(path, 'utf8');
-    if (
-      /src="\/(.*?)"/g.test(html) ||
-      /src='\/(.*?)'/g.test(html) ||
-      /href="\/(.*?(css|js))"/g.test(html) ||
-      /href='\/(.*?(css|js))'/g.test(html)
-    ) {
+    if (/src=["']\/(.*?\..*?)["']/g.test(html) || /href=["']\/(.*?\..*?)["']/g.test(html)) {
       const modifiedHtml = html
-        .replace(/src="\/(.*?)"/g, 'src="$1"')
-        .replace(/src='\/(.*?)'/g, "src='$1'")
-        .replace(/href="\/(.*?(css|js))"/g, 'href="$1"')
-        .replace(/href='\/(.*?(css|js))'/g, "href='$1'");
+        .replace(/src=["']\/(.*?\..*?)["']/g, 'src="$1"')
+        .replace(/href=["']\/(.*?\..*?)["']/g, 'href="$1"');
       fs.writeFileSync(path, modifiedHtml);
     }
   }
@@ -208,7 +330,58 @@ export class WebArDrive extends ArDrive {
     }
   }
 
-  public async uploadFolder(arweave: Arweave, address: ArweaveAddress) {
+  public async uploadPublicManifestNext(
+    {
+      folderId,
+      destManifestName = 'DriveManifest.json',
+      maxDepth = Number.MAX_SAFE_INTEGER,
+      conflictResolution = upsertOnConflicts,
+      prompts,
+    }: UploadPublicManifestParams,
+    appType: string
+  ): Promise<ArFSManifestResult> {
+    const driveId = await this.arFsDao.getDriveIdForFolderId(folderId);
+
+    // Assert that the owner of this drive is consistent with the provided wallet
+    const owner = await this.getOwnerForDriveId(driveId);
+    await this.assertOwnerAddress(owner);
+
+    const children = await this.listPublicFolder({
+      folderId,
+      maxDepth,
+      includeRoot: true,
+      owner,
+    });
+    const arweaveManifest = new ArFSManifestToUpload(children, destManifestName, appType);
+    const uploadManifestResults = await this.uploadAllEntities({
+      entitiesToUpload: [
+        {
+          wrappedEntity: arweaveManifest,
+          destFolderId: folderId,
+          destName: arweaveManifest.destinationBaseName,
+        },
+      ],
+      conflictResolution,
+      prompts: prompts as FolderConflictPrompts,
+    });
+
+    const manifestTxId = uploadManifestResults.created[0]?.dataTxId;
+
+    if (manifestTxId) {
+      const links = this.arFsDao.getManifestLinks(manifestTxId, arweaveManifest);
+
+      return {
+        ...uploadManifestResults,
+        manifest: arweaveManifest.manifest,
+        links,
+      };
+    }
+
+    // ArFSResult was empty, return expected empty manifest result
+    return emptyManifestResult;
+  }
+
+  public async uploadFolder(arweave: Arweave, address: ArweaveAddress, appType: string) {
     let parentFolderID;
     this.modifyHtmls(this.config.folderPath);
 
@@ -296,13 +469,16 @@ export class WebArDrive extends ArDrive {
       }
       log.info('App files uploaded successfully!');
       log.info('Creating manifest...');
-      const manifest = await this.uploadPublicManifest({
-        folderId,
-        destManifestName: MANIFEST_NAME,
-        maxDepth: Number.MAX_SAFE_INTEGER,
-        conflictResolution: 'upsert',
-        prompts: fileUploadConflictPrompts,
-      });
+      const manifest = await this.uploadPublicManifestNext(
+        {
+          folderId,
+          destManifestName: MANIFEST_NAME,
+          maxDepth: Number.MAX_SAFE_INTEGER,
+          conflictResolution: 'upsert',
+          prompts: fileUploadConflictPrompts,
+        },
+        appType
+      );
       console.log(JSON.stringify(manifest, null, 4));
       totalFeesInWinston = totalFeesInWinston.plus(
         manifest.tips.reduce((acc, tip) => tip.winston.plus(acc), new Winston(0))

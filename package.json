@@ -44,8 +44,13 @@
     "node": ">=10"
   },
   "dependencies": {
-    "ardrive-core-js": "^1.15.1",
+    "@netlify/framework-info": "8.0.2",
+    "ardrive-core-js": "^1.17.0",
+    "chalk": "4.1.2",
+    "commander": "^9.4.0",
+    "jiti": "^1.14.0",
     "ora": "5.4.1",
+    "promisify-child-process": "^4.1.1",
     "prompts": "^2.4.2",
     "tslog": "^3.3.3"
   },
