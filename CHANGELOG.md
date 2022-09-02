@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 2.0.0 (2022-09-02)
+- Added support for auto build with app detection for react, next, vue, nuxt and vite apps.
+- Added support for nextjs apps by updating the manifest.
+- Introduced init and deploy CLI commands.
+
 ### 1.0.3 (2022-06-29)
 - Added support for cjs config file
 
