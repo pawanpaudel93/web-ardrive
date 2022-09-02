@@ -36,7 +36,7 @@ const buildCommands = {
   next: 'npx next build && npx next export',
   vue: 'npx vue-cli-service build',
   nuxt: 'npx nuxt generate',
-  vite: 'npx vite build',
+  vite: 'npx vite build --base "./"',
 };
 
 const checkConfig = (config: WebArDriveConfig) => {
