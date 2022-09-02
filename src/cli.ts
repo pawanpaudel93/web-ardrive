@@ -107,6 +107,9 @@ const buildConfig = async (config: WebArDriveConfig) => {
 
 const buildApp = async (config: WebArDriveConfig) => {
   if (config.appType) {
+    if (config.appType === 'react') {
+      process.env.PUBLIC_URL = './';
+    }
     await runCommand(buildCommands[config.appType]);
   }
 };
