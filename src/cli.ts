@@ -31,6 +31,14 @@ const WebArdriveConfig = {
 export default WebArdriveConfig;
 `;
 
+const buildCommands = {
+  react: 'npx react-scripts build',
+  next: 'npx next build && npx next export',
+  vue: 'npx vue-cli-service build',
+  nuxt: 'npx nuxt generate',
+  vite: 'npx vite build',
+};
+
 const checkConfig = (config: WebArDriveConfig) => {
   const errors: string[] = [];
   if (!config.folderPath && typeof config.folderPath !== 'string') {
@@ -82,23 +90,24 @@ const buildConfig = async (config: WebArDriveConfig) => {
   config.appType = appType === 'create-react-app' ? 'react' : appType;
   if (config.appType === 'react') {
     config.folderPath = 'build';
-    await runCommand('npx react-scripts build');
   } else if (config.appType === 'next') {
     const appConfig = getConfig('next.config.{js,ts}', config.folderPath);
     config.folderPath = appConfig.outDir ? appConfig.outDir : 'out';
-    await runCommand('npx next build && npx next export');
   } else if (config.appType === 'vue') {
     const appConfig = getConfig('vue.config.{js,ts}', config.folderPath);
     config.folderPath = appConfig.outputDir ? appConfig.outputDir : 'dist';
-    await runCommand('npx vue-cli-service build');
   } else if (config.appType === 'nuxt') {
     const appConfig = getConfig('nuxt.config.{js,ts}', config.folderPath);
     config.folderPath = appConfig?.generate?.dir ? appConfig?.generate?.dir : 'dist';
-    await runCommand('npx nuxt generate');
   } else if (config.appType === 'vite') {
     const appConfig = getConfig('vite.config.{js,ts}', config.folderPath);
     config.folderPath = appConfig?.build?.outDir ? appConfig?.build?.outDir : 'dist';
-    await runCommand('npx vite build');
+  }
+};
+
+const buildApp = async (config: WebArDriveConfig) => {
+  if (config.appType) {
+    await runCommand(buildCommands[config.appType]);
   }
 };
 
@@ -121,6 +130,7 @@ const uploadFolder = async ({
     dryRun,
   };
   checkConfig(config);
+  await buildApp(config);
   if (fs.existsSync(config.folderPath)) {
     try {
       const arweaveConfig = config.production
@@ -155,7 +165,7 @@ const uploadFolder = async ({
         `Loaded wallet with address: ${address} and Balance: ${walletBalanceInWinston.toString()} Winston (${walletBalanceInAR.toString()} AR)`
       );
       try {
-        const result = await arDrive.uploadFolder(arweave, address, config.appType);
+        const result = await arDrive.uploadFolder(arweave, address);
         const baseUrl = `${arweaveConfig.protocol}://${arweaveConfig.host}${
           config.production ? '' : ':' + arweaveConfig.port
         }`;

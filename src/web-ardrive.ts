@@ -381,9 +381,11 @@ export class WebArDrive extends ArDrive {
     return emptyManifestResult;
   }
 
-  public async uploadFolder(arweave: Arweave, address: ArweaveAddress, appType: string) {
+  public async uploadFolder(arweave: Arweave, address: ArweaveAddress) {
     let parentFolderID;
-    this.modifyHtmls(this.config.folderPath);
+    if (this.config.appType !== 'next') {
+      this.modifyHtmls(this.config.folderPath);
+    }
 
     if (this.config.production) {
       parentFolderID = EID(this.config.parentFolderID) as FolderID;
@@ -477,7 +479,7 @@ export class WebArDrive extends ArDrive {
           conflictResolution: 'upsert',
           prompts: fileUploadConflictPrompts,
         },
-        appType
+        this.config.appType
       );
       console.log(JSON.stringify(manifest, null, 4));
       totalFeesInWinston = totalFeesInWinston.plus(

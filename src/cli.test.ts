@@ -52,7 +52,7 @@ describe('CLI', () => {
 
     await fundArLocalWallet(arweave, wallet);
     const address = await wallet.getAddress();
-    const result: string = await arDrive.uploadFolder(arweave, address, '');
+    const result: string = await arDrive.uploadFolder(arweave, address);
     expect(result).to.be.a('string');
   });
 

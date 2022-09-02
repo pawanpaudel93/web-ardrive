@@ -32,7 +32,7 @@ export type WebArDriveConfig = {
   walletPath: string;
   destFolderName: string;
   folderPath?: string;
-  appType?: string;
+  appType?: 'react' | 'next' | 'vue' | 'nuxt' | 'vite' | '';
   parentFolderID?: string;
   production?: boolean;
   dryRun?: boolean;
