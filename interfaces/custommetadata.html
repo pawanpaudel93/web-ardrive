@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>TransactionConfirmedData | web-ardrive</title>
+	<title>CustomMetaData | web-ardrive</title>
 	<meta name="description" content="Documentation for web-ardrive">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,10 +56,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="transactionconfirmeddata.html">TransactionConfirmedData</a>
+					<a href="custommetadata.html">CustomMetaData</a>
 				</li>
 			</ul>
-			<h1>Interface TransactionConfirmedData</h1>
+			<h1>Interface CustomMetaData</h1>
 		</div>
 	</div>
 </header>
@@ -70,7 +70,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">TransactionConfirmedData</span>
+						<span class="target">CustomMetaData</span>
 					</li>
 				</ul>
 			</section>
@@ -81,9 +81,9 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="transactionconfirmeddata.html#block_height" class="tsd-kind-icon">block_<wbr>height</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="transactionconfirmeddata.html#block_indep_hash" class="tsd-kind-icon">block_<wbr>indep_<wbr>hash</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="transactionconfirmeddata.html#number_of_confirmations" class="tsd-kind-icon">number_<wbr>of_<wbr>confirmations</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="custommetadata.html#datagqltags" class="tsd-kind-icon">data<wbr>Gql<wbr>Tags</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="custommetadata.html#metadatagqltags" class="tsd-kind-icon">meta<wbr>Data<wbr>Gql<wbr>Tags</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="custommetadata.html#metadatajson" class="tsd-kind-icon">meta<wbr>Data<wbr>Json</a></li>
 							</ul>
 						</section>
 					</div>
@@ -92,34 +92,49 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="block_height" class="tsd-anchor"></a>
-					<h3>block_<wbr>height</h3>
-					<div class="tsd-signature tsd-kind-icon">block_<wbr>height<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<a name="datagqltags" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> data<wbr>Gql<wbr>Tags</h3>
+					<div class="tsd-signature tsd-kind-icon">data<wbr>Gql<wbr>Tags<span class="tsd-signature-symbol">:</span> <a href="../globals.html#custommetadatataginterface" class="tsd-signature-type">CustomMetaDataTagInterface</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/a3e4171/src/utils.ts#L89">src/utils.ts:89</a></li>
+							<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/a3e4171/src/utils.ts#L62">src/utils.ts:62</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Include custom metadata on File Data Tx GQL Tags</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="block_indep_hash" class="tsd-anchor"></a>
-					<h3>block_<wbr>indep_<wbr>hash</h3>
-					<div class="tsd-signature tsd-kind-icon">block_<wbr>indep_<wbr>hash<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="metadatagqltags" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> meta<wbr>Data<wbr>Gql<wbr>Tags</h3>
+					<div class="tsd-signature tsd-kind-icon">meta<wbr>Data<wbr>Gql<wbr>Tags<span class="tsd-signature-symbol">:</span> <a href="../globals.html#custommetadatagqltags" class="tsd-signature-type">CustomMetaDataGqlTags</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/a3e4171/src/utils.ts#L88">src/utils.ts:88</a></li>
+							<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/a3e4171/src/utils.ts#L59">src/utils.ts:59</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Include custom metadata on MetaData Tx GQL Tags</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="number_of_confirmations" class="tsd-anchor"></a>
-					<h3>number_<wbr>of_<wbr>confirmations</h3>
-					<div class="tsd-signature tsd-kind-icon">number_<wbr>of_<wbr>confirmations<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<a name="metadatajson" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> meta<wbr>Data<wbr>Json</h3>
+					<div class="tsd-signature tsd-kind-icon">meta<wbr>Data<wbr>Json<span class="tsd-signature-symbol">:</span> <a href="../globals.html#custommetadatajsonfields" class="tsd-signature-type">CustomMetaDataJsonFields</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/a3e4171/src/utils.ts#L90">src/utils.ts:90</a></li>
+							<li>Defined in <a href="https://github.com/pawanpaudel93/web-ardrive/blob/a3e4171/src/utils.ts#L56">src/utils.ts:56</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Include custom metadata on MetaData Tx Data JSON</p>
+						</div>
+					</div>
 				</section>
 			</section>
 		</div>
@@ -136,16 +151,16 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface">
-						<a href="transactionconfirmeddata.html" class="tsd-kind-icon">Transaction<wbr>Confirmed<wbr>Data</a>
+						<a href="custommetadata.html" class="tsd-kind-icon">Custom<wbr>Meta<wbr>Data</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="transactionconfirmeddata.html#block_height" class="tsd-kind-icon">block_<wbr>height</a>
+								<a href="custommetadata.html#datagqltags" class="tsd-kind-icon">data<wbr>Gql<wbr>Tags</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="transactionconfirmeddata.html#block_indep_hash" class="tsd-kind-icon">block_<wbr>indep_<wbr>hash</a>
+								<a href="custommetadata.html#metadatagqltags" class="tsd-kind-icon">meta<wbr>Data<wbr>Gql<wbr>Tags</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="transactionconfirmeddata.html#number_of_confirmations" class="tsd-kind-icon">number_<wbr>of_<wbr>confirmations</a>
+								<a href="custommetadata.html#metadatajson" class="tsd-kind-icon">meta<wbr>Data<wbr>Json</a>
 							</li>
 						</ul>
 					</li>

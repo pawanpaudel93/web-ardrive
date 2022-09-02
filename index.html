@@ -82,7 +82,7 @@
 				<a href="#about-" id="about-" style="color: inherit; text-decoration: none;">
 					<h2>About <a name = "about"></a></h2>
 				</a>
-				<p>Web Ardrive is a cli tool to deploy web apps to Arweave using ArDrive. ArDrive isn&#39;t just another cloud storage service. ArDrive is built on the Arweave network whose permanent data storage lets to upload any files which will outlive you!
+				<p>Web Ardrive is a CLI tool to deploy web apps to Arweave using ArDrive. ArDrive isn&#39;t just another cloud storage service. ArDrive is built on the Arweave network whose permanent data storage lets to upload any files which will outlive you!
 				Learn more about <a href="https://ardrive.io/">ArDrive</a> and <a href="https://www.arweave.org/">Arweave</a>.</p>
 				<blockquote>
 					<p>:warning: <strong>Deploy using ArLocal first to check everything is working.</strong></p>
@@ -99,107 +99,55 @@
 				<a href="#usage-" id="usage-" style="color: inherit; text-decoration: none;">
 					<h2>Usage <a name = "usage"></a></h2>
 				</a>
-				<p>Lets go through steps on how to use web-ardrive in your projects to deploy apps.</p>
-				<p>When creating a manifest, it is possible to host a webpage or web app. You can do this by creating a manifest on a folder that has an <code>index.html</code> file in its root. The manifest contains the paths of the files and the transaction ID to resolve to for the given path. You can see more about it here <a href="https://github.com/ArweaveTeam/arweave/blob/master/doc/path-manifest-schema.md">Arweave Manifest</a>.</p>
-				<p>So to make the static build folders compatible on the arweave, we must use relative urls on the href instead of absolute ones so that the manifest can resolve the file path. For example <code>href=&quot;/dist/index.js&quot;</code> must be replaced with either <code>href=&quot;dist/index.js&quot;</code> or <code>href=&quot;./dist/index.js&quot;</code>.</p>
 				<p>Let&#39;s deploy applications created with popular libraries and frameworks using ArDrive.</p>
-				<blockquote>
-					<blockquote>
-						<p><span style='color: green;'>RECOMMENDED</span>: Use router in hash mode in apps.</p>
-					</blockquote>
-				</blockquote>
+				<p><span style='color: green;'>RECOMMENDED</span>: Use hash router in react, vue, and nuxt based apps. For next apps there is no hash based routing so manifest is adjusted for routes to work on reload but dynamic routes may not work on reload.</p>
 				<a href="#reactjs-amp-nextjs" id="reactjs-amp-nextjs" style="color: inherit; text-decoration: none;">
 					<h3>ReactJS &amp; NextJS</h3>
 				</a>
-				<blockquote>
-					<p><strong>ReactJS</strong> </p>
-					<blockquote>
-						<p><span style='color: green;'>RECOMMENDED</span>: Use HashRouter from react-router-dom in react apps. Check project <a href="https://github.com/pawanpaudel93/web-ardrive/tree/main/examples">examples</a></p>
-					</blockquote>
-				</blockquote>
-				<p>Add the following to package.json so the paths can resolve correctly.</p>
-				<pre><code><span class="hljs-symbol">homepage:</span> <span class="hljs-string">&quot;.&quot;</span>
-</code></pre>
-				<p>Now you can create the production build. Run the following command:</p>
-				<pre><code>npm <span class="hljs-builtin-name">run</span> build
-</code></pre>
-				<p>OR</p>
-				<pre><code><span class="hljs-attribute">yarn build</span>
-</code></pre>
-				<blockquote>
-					<p><strong>Nextjs Static Export</strong>:</p>
-				</blockquote>
+				<hr>
+				<a href="#reactjs" id="reactjs" style="color: inherit; text-decoration: none;">
+					<h4><strong>ReactJS</strong></h4>
+				</a>
+				<p><span style='color: green;'>RECOMMENDED</span>: Use HashRouter from react-router-dom in react apps. Check project <a href="https://github.com/pawanpaudel93/web-ardrive/tree/main/examples">examples</a></p>
+				<a href="#nextjs-static-export" id="nextjs-static-export" style="color: inherit; text-decoration: none;">
+					<h4><strong>Nextjs Static Export</strong>:</h4>
+				</a>
 				<p>Learn about it <a href="https://nextjs.org/docs/advanced-features/static-html-export">here</a> for the supported and unsupported features in static html export.</p>
-				<p>Add the configuration to the next.config.js or next.config.ts file.</p>
-				<pre><code><span class="hljs-symbol">assetPrefix:</span> <span class="hljs-string">&quot;./&quot;</span>,
-</code></pre>
-				<p>Add the following to package.json scripts.</p>
-				<pre><code><span class="hljs-string">&quot;export&quot;</span>: <span class="hljs-string">&quot;next build &amp;&amp; next export&quot;</span>
-</code></pre>
-				<p>And run: </p>
-				<pre><code>npm run <span class="hljs-keyword">export</span>
-</code></pre>
-				<p>OR</p>
-				<pre><code><span class="hljs-title">yarn</span> ex<span class="hljs-keyword">port</span>
-</code></pre>
 				<p>If you are having problems regarding images in nextjs html export, see <a href="https://stackoverflow.com/questions/65487914/error-image-optimization-using-next-js-default-loader-is-not-compatible-with-n">here</a>.</p>
 				<a href="#vuejs-amp-nuxtjs" id="vuejs-amp-nuxtjs" style="color: inherit; text-decoration: none;">
 					<h3>VueJS &amp; NuxtJS</h3>
 				</a>
-				<blockquote>
-					<p><strong>VueJS</strong></p>
-				</blockquote>
-				<blockquote>
-					<blockquote>
-						<p><span style='color: green;'>RECOMMENDED</span>: Use router in hash mode in vue apps.</p>
-					</blockquote>
-				</blockquote>
+				<hr>
+				<a href="#vuejs" id="vuejs" style="color: inherit; text-decoration: none;">
+					<h4><strong>VueJS</strong></h4>
+				</a>
+				<p><span style='color: green;'>RECOMMENDED</span>: Use router in hash mode in vue apps.</p>
 				<p>Modify vue.config.js or vue.config.ts to include the following config:</p>
 				<pre><code>publicPath: <span class="hljs-string">&quot;./&quot;</span> <span class="hljs-regexp">//</span> default is /
 </code></pre>
-				<p>Now, run the following command to create the production build.</p>
-				<pre><code>npm <span class="hljs-builtin-name">run</span> build
-</code></pre>
-				<p>OR</p>
-				<pre><code><span class="hljs-attribute">yarn build</span>
-</code></pre>
-				<blockquote>
-					<p><strong>NuxtJS</strong></p>
-				</blockquote>
+				<a href="#nuxtjs" id="nuxtjs" style="color: inherit; text-decoration: none;">
+					<h4><strong>NuxtJS</strong></h4>
+				</a>
 				<p>Modify nuxt.config.js or nuxt.config.ts to include the following config:</p>
 				<pre><code>targe<span class="hljs-variable">t:</span> <span class="hljs-string">&#x27;static&#x27;</span>, // default <span class="hljs-keyword">is</span> <span class="hljs-string">&#x27;server&#x27;</span>
 router: {
   <span class="hljs-keyword">mode</span>: <span class="hljs-string">&#x27;hash&#x27;</span>,
-  base: <span class="hljs-string">&#x27;./&#x27;</span>,
-  }
-</code></pre>
-				<p>Now, run the following command tp generate the static production build.</p>
-				<pre><code>npm run <span class="hljs-keyword">generate</span>
-</code></pre>
-				<p>OR</p>
-				<pre><code>yarn <span class="hljs-keyword">generate</span>
+  base:  <span class="hljs-string">&#x27;./&#x27;</span>
+}
 </code></pre>
 				<p>Read more about going full static mode in nuxtjs [Going Full Static (<a href="https://nuxtjs.org/announcements/going-full-static/">https://nuxtjs.org/announcements/going-full-static/</a>)</p>
 				<a href="#vitejs" id="vitejs" style="color: inherit; text-decoration: none;">
 					<h3>ViteJS</h3>
 				</a>
-				<p>Add the following to package.json so the paths can resolve correctly.</p>
-				<pre><code><span class="hljs-symbol">homepage:</span> <span class="hljs-string">&quot;.&quot;</span>
-</code></pre>
-				<p>Modify vite.config.js or vite.config.ts to include the following config:</p>
-				<pre><code>base: <span class="hljs-string">&quot;./&quot;</span> <span class="hljs-regexp">//</span> default is /
-</code></pre>
-				<p>Now, run the following command to create the production build.</p>
-				<pre><code>npm <span class="hljs-builtin-name">run</span> build
-</code></pre>
-				<p>OR</p>
-				<pre><code><span class="hljs-attribute">yarn build</span>
-</code></pre>
+				<hr>
 				<p>Examples of react, vue and svelte using vite is included in the examples folder.</p>
 				<blockquote>
 					<p>And now you have to add config file for web-ardrive to upload the production build to arweave.</p>
 				</blockquote>
-				<p>Create a file named web-ardrive.config.js or web-ardrive.config.cjs  on the root folder of your project and add the config as:</p>
+				<p>Run this command to add configuration file for web-ardrive.</p>
+				<pre><code>web-ardrive <span class="hljs-keyword">init</span>
+</code></pre>
+				<p>Now modify the configuration file (web-ardrive.config.js) as per your need from the following:</p>
 				<table>
 					<thead>
 						<tr>
@@ -214,9 +162,14 @@ router: {
 							<td>wallet json file path</td>
 						</tr>
 						<tr>
-							<td>folderPath</td>
+							<td>folderPath?</td>
 							<td>string</td>
-							<td>relative build folder path from project root folder Eg: &#39;build&#39; ,&#39;./build&#39;, &#39;out&#39;</td>
+							<td>folderPath of the build folder to be deployed. Auto discovered for app using vue, nuxt, react, next and vite if not provided. It may be needed for simple JS/TS app.</td>
+						</tr>
+						<tr>
+							<td>appType?</td>
+							<td>string</td>
+							<td>Possible values: &#39;react&#39;, &#39;next&#39;, &#39;vue&#39;, &#39;nuxt&#39;, &#39;vite&#39; and &#39;&#39;</td>
 						</tr>
 						<tr>
 							<td>destFolderName</td>
@@ -245,19 +198,20 @@ router: {
 const <span class="hljs-type">WebArDriveConfig</span> = {
   walletPath: <span class="hljs-symbol">&#x27;wallet</span>.json&#x27;,
   folderPath: <span class="hljs-symbol">&#x27;build&#x27;</span>,
+  appType: <span class="hljs-symbol">&#x27;react&#x27;</span>,
   parentFolderID: <span class="hljs-symbol">&#x27;e6cb2f0d</span>-<span class="hljs-number">91</span>d7-<span class="hljs-number">4</span>acc-<span class="hljs-number">9772</span>-<span class="hljs-number">72</span>c514263908&#x27;,
   destFolderName: <span class="hljs-symbol">&#x27;public</span>-square&#x27;,
   production: <span class="hljs-literal">false</span>,
 };
 
-module.exports = <span class="hljs-type">WebArDriveConfig</span>;
+export default <span class="hljs-type">WebArDriveConfig</span>;
 </code></pre>
 				<p>This configuration deploys <code>build</code> folder to the folder with name <code>public-square</code> where <code>public-square</code> folder is created on parent folder with ID parentFolderID. Production is false so the application is not deployed to Arweave but to local testnet <code>ArLocal</code>.</p>
 				<p>If you want to check if the application is working as expected or not, the application can be deployed to local testnet <code>ArLocal</code> using production as false and running the local testnet. Run arlocal with the following from the terminal.</p>
 				<pre><code><span class="hljs-attribute">npx arlocal</span>
 </code></pre>
 				<p>After the configuration, run web-ardrive command from the root folder of the project.</p>
-				<pre><code><span class="hljs-attribute">web-ardrive</span>
+				<pre><code><span class="hljs-attribute">web-ardrive deploy</span>
 </code></pre>
 				<a href="#author" id="author" style="color: inherit; text-decoration: none;">
 					<h2>Author</h2>
@@ -288,16 +242,37 @@ module.exports = <span class="hljs-type">WebArDriveConfig</span>;
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-class">
+						<a href="classes/arfsmanifesttoupload.html" class="tsd-kind-icon">ArFSManifest<wbr>ToUpload</a>
+					</li>
+					<li class=" tsd-kind-class">
 						<a href="classes/webardrive.html" class="tsd-kind-icon">Web<wbr>ArDrive</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/ardrivesettings.html" class="tsd-kind-icon">Ar<wbr>Drive<wbr>Settings</a>
 					</li>
 					<li class=" tsd-kind-interface">
+						<a href="interfaces/custommetadata.html" class="tsd-kind-icon">Custom<wbr>Meta<wbr>Data</a>
+					</li>
+					<li class=" tsd-kind-interface">
 						<a href="interfaces/transactionconfirmeddata.html" class="tsd-kind-icon">Transaction<wbr>Confirmed<wbr>Data</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/uploadpathparameter.html" class="tsd-kind-icon">Upload<wbr>Path<wbr>Parameter</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#custommetadatagqltags" class="tsd-kind-icon">Custom<wbr>Meta<wbr>Data<wbr>Gql<wbr>Tags</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#custommetadatajsonfields" class="tsd-kind-icon">Custom<wbr>Meta<wbr>Data<wbr>Json<wbr>Fields</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#custommetadatataginterface" class="tsd-kind-icon">Custom<wbr>Meta<wbr>Data<wbr>Tag<wbr>Interface</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#entitymetadatatransactiondata" class="tsd-kind-icon">Entity<wbr>Meta<wbr>Data<wbr>Transaction<wbr>Data</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#jsonserializable" class="tsd-kind-icon">Json<wbr>Serializable</a>
 					</li>
 					<li class=" tsd-kind-type-alias">
 						<a href="globals.html#webardriveconfig" class="tsd-kind-icon">Web<wbr>ArDrive<wbr>Config</a>
@@ -315,13 +290,34 @@ module.exports = <span class="hljs-type">WebArDriveConfig</span>;
 						<a href="globals.html#conflictinterruptederror" class="tsd-kind-icon">conflict<wbr>Interrupted<wbr>Error</a>
 					</li>
 					<li class=" tsd-kind-variable">
+						<a href="globals.html#defaultconfig" class="tsd-kind-icon">default<wbr>Config</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#jiti" class="tsd-kind-icon">jiti</a>
+					</li>
+					<li class=" tsd-kind-variable">
 						<a href="globals.html#log" class="tsd-kind-icon">log</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#program" class="tsd-kind-icon">program</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#ardrivefactory" class="tsd-kind-icon">ar<wbr>Drive<wbr>Factory</a>
 					</li>
 					<li class=" tsd-kind-function">
+						<a href="globals.html#buildapp" class="tsd-kind-icon">build<wbr>App</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#buildconfig" class="tsd-kind-icon">build<wbr>Config</a>
+					</li>
+					<li class=" tsd-kind-function">
 						<a href="globals.html#checkconfig" class="tsd-kind-icon">check<wbr>Config</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#deploy" class="tsd-kind-icon">deploy</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#detectframework" class="tsd-kind-icon">detect<wbr>Framework</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#filenameprompt" class="tsd-kind-icon">file<wbr>Name<wbr>Prompt</a>
@@ -345,16 +341,25 @@ module.exports = <span class="hljs-type">WebArDriveConfig</span>;
 						<a href="globals.html#fundarlocalwallet" class="tsd-kind-icon">fund<wbr>ArLocal<wbr>Wallet</a>
 					</li>
 					<li class=" tsd-kind-function">
+						<a href="globals.html#getconfig" class="tsd-kind-icon">get<wbr>Config</a>
+					</li>
+					<li class=" tsd-kind-function">
 						<a href="globals.html#getnewnamefromrenameprompt" class="tsd-kind-icon">get<wbr>New<wbr>Name<wbr>From<wbr>Rename<wbr>Prompt</a>
 					</li>
 					<li class=" tsd-kind-function">
-						<a href="globals.html#main" class="tsd-kind-icon">main</a>
+						<a href="globals.html#init" class="tsd-kind-icon">init</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#minearlocalblock" class="tsd-kind-icon">mine<wbr>ArLocal<wbr>Block</a>
 					</li>
 					<li class=" tsd-kind-function">
+						<a href="globals.html#runcommand" class="tsd-kind-icon">run<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-function">
 						<a href="globals.html#uploadfolder" class="tsd-kind-icon">upload<wbr>Folder</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#buildcommands" class="tsd-kind-icon">build<wbr>Commands</a>
 					</li>
 					<li class=" tsd-kind-object-literal">
 						<a href="globals.html#fileandfolderuploadconflictprompts" class="tsd-kind-icon">file<wbr>And<wbr>Folder<wbr>Upload<wbr>Conflict<wbr>Prompts</a>
@@ -380,10 +385,11 @@ module.exports = <span class="hljs-type">WebArDriveConfig</span>;
 				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
 			</ul>
 			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
 			</ul>
 			<ul class="tsd-legend">
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
