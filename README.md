@@ -33,7 +33,7 @@ yarn add global web-ardrive
 
 Let's deploy applications created with popular libraries and frameworks using ArDrive.
 
-<span style='color: green;'>RECOMMENDED</span>: Use router in hash mode in apps.
+<span style='color: green;'>RECOMMENDED</span>: Use hash router in react, vue, and nuxt based apps. For next apps there is no hash based routing so manifest is adjusted for routes to work on reload but dynamic routes may not work on reload.
 
 ### ReactJS & NextJS
 
@@ -58,6 +58,11 @@ If you are having problems regarding images in nextjs html export, see [here](ht
 
 <span style='color: green;'>RECOMMENDED</span>: Use router in hash mode in vue apps.
 
+Modify vue.config.js or vue.config.ts to include the following config:
+```
+publicPath: "./" // default is /
+```
+
 #### **NuxtJS**
 
 Modify nuxt.config.js or nuxt.config.ts to include the following config:
@@ -66,6 +71,7 @@ Modify nuxt.config.js or nuxt.config.ts to include the following config:
 target: 'static', // default is 'server'
 router: {
   mode: 'hash',
+  base:  './'
 }
 ```
 
