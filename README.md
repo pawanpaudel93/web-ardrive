@@ -7,15 +7,13 @@
 - [Usage](#usage)
 - [Contributing](#contributing)
 
-> NOTE: WIP
-
 
 ## About <a name = "about"></a>
 
 Web Ardrive is a CLI tool to deploy web apps to Arweave using ArDrive. ArDrive isn't just another cloud storage service. ArDrive is built on the Arweave network whose permanent data storage lets to upload any files which will outlive you!
 Learn more about [ArDrive](https://ardrive.io/) and [Arweave](https://www.arweave.org/).
 
-> :warning: **Deploy using ArLocal first to check everything is working.**
+> __Note__: **Deploy using ArLocal first to check everything is working.**
 
 
 ## Installing <a name = "installing"></a>
@@ -33,7 +31,7 @@ yarn add global web-ardrive
 
 Let's deploy applications created with popular libraries and frameworks using ArDrive.
 
-<span style='color: green;'>RECOMMENDED</span>: Use hash router in react, vue, and nuxt based apps. For next apps there is no hash based routing so manifest is adjusted for routes to work on reload but dynamic routes may not work on reload.
+> __Note__: Use hash router in react, vue, and nuxt based apps. For next apps there is no hash based routing so manifest is adjusted for routes to work on reload but dynamic routes may not work on reload.
 
 ### ReactJS & NextJS
 
@@ -42,7 +40,7 @@ Let's deploy applications created with popular libraries and frameworks using Ar
 
 #### **ReactJS** 
 
-<span style='color: green;'>RECOMMENDED</span>: Use HashRouter from react-router-dom in react apps. Check project [examples](https://github.com/pawanpaudel93/web-ardrive/tree/main/examples)
+> __Note__: Use HashRouter from react-router-dom in react apps. Check project [examples](https://github.com/pawanpaudel93/web-ardrive/tree/main/examples)
 
 #### **Nextjs Static Export**:
 
@@ -56,7 +54,7 @@ If you are having problems regarding images in nextjs html export, see [here](ht
 
 #### **VueJS**
 
-<span style='color: green;'>RECOMMENDED</span>: Use router in hash mode in vue apps.
+> __Note__: Use router in hash mode in vue apps.
 
 Modify vue.config.js or vue.config.ts to include the following config:
 ```
@@ -79,10 +77,13 @@ Read more about going full static mode in nuxtjs [Going Full Static (https://nux
 
 ### ViteJS
 ------------
+> __Note__: Use hash router for react, vue and svelte accordingly.
 
 Examples of react, vue and svelte using vite is included in the examples folder.
 
-> And now you have to add config file for web-ardrive to upload the production build to arweave.
+### Configuration
+
+And now you have to add config file for web-ardrive to upload the production build to arweave.
 
 Run this command to add configuration file for web-ardrive.
 
@@ -130,6 +131,7 @@ After the configuration, run web-ardrive command from the root folder of the pro
 ```
 web-ardrive deploy
 ```
+After apps are deployed, configure ArNS from [Permapages](https://permapages.arweave.dev/#/arns) for the deployed app.
 
 ## Author
 
