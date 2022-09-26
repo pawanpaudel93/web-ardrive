@@ -80,6 +80,13 @@ const runCommand = async (command: string) => {
 const detectFramework = async () => {
   const frameworks = await listFrameworks('.');
   if (frameworks.length > 0) {
+    if (
+      frameworks.length === 2 &&
+      ((/[svelte|vite]/g.test(frameworks[0].id) && /[svelte|vite]/g.test(frameworks[1].id)) ||
+        (/[svelte-kit|vite]/g.test(frameworks[0].id) && /[svelte-kit|vite]/g.test(frameworks[1].id)))
+    ) {
+      return 'vite';
+    }
     return frameworks[0].id;
   }
   return '';
