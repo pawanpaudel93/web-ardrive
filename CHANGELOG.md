@@ -2,6 +2,9 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.1](https://github.com/pawanpaudel93/web-ardrive/compare/v2.0.0...v2.0.1) (2022-09-27)
+- Updated framework detection
+
 ### 2.0.0 (2022-09-02)
 - Added support for auto build with app detection for react, next, vue, nuxt and vite apps.
 - Added support for nextjs apps by updating the manifest.
