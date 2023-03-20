@@ -246,7 +246,7 @@ const deploy = async () => {
 
 process.env['ARDRIVE_PROGRESS_LOG'] = '1';
 const program = new Command();
-program.name('web-ardrive').description('A CLI tool to deploy web apps to Arweave using ArDrive').version('2.0.1');
+program.name('web-ardrive').description('A CLI tool to deploy web apps to Arweave using ArDrive').version('2.0.2');
 
 program.command('init').description('Initialize web-ardrive configuration.').action(init);
 program.command('deploy').description('Deploy web app to Arweave.').action(deploy);
